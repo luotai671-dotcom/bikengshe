@@ -1,5 +1,16 @@
 # 梯子避坑社 (EscapeTrap) 极客网络技术与排障库
 
+<p align="left">
+  <a href="https://tizibks.com"><img src="https://img.shields.io/badge/官网-tizibks.com-10b981?style=flat-square&logo=google-chrome&logoColor=white" alt="官网" /></a>
+  <a href="https://github.com/luotai671-dotcom/bikengshe/releases"><img src="https://img.shields.io/badge/Release-v1.0.0-10b981?style=flat-square&logo=github" alt="Release" /></a>
+  <img src="https://img.shields.io/badge/Astro-5.0-ff5d01?style=flat-square&logo=astro&logoColor=white" alt="Astro" />
+  <img src="https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/SSG-156_Pages-success?style=flat-square" alt="SSG Pages" />
+  <img src="https://img.shields.io/badge/Lighthouse-100-success?style=flat-square" alt="Lighthouse" />
+</p>
+
 基于 **Astro 5 + React Islands + Tailwind CSS (v3)** 构建的现代极简网络工程指南与性能评测站点。全量静态预渲染 (SSG)，极致 SEO 与 AI 搜索引擎（GEO）秒级抓取。
 
 ---
