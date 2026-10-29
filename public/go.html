@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>安全跳转中 · 梯子避坑社</title>
+  <style>
+    :root {
+      --bg: #050811;
+      --card-bg: rgba(10, 17, 34, 0.88);
+      --border: rgba(16, 185, 129, 0.28);
+      --primary: #10b981;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .redirect-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(16, 185, 129, 0.15);
+      backdrop-filter: blur(20px);
+    }
+    .spinner-ring {
+      width: 44px;
+      height: 44px;
+      border: 3px solid rgba(16, 185, 129, 0.18);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.75s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      margin: 0 auto 24px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .btn-forward {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 26px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
+      transition: opacity 0.2s;
+    }
+    .btn-forward:hover { opacity: 0.9; }
+    .security-note {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 20px;
+      font-family: monospace;
+    }
+  </style>
+  <script>
+    var AFF_MAP = {
+      'sds': 'https://chenpin.shandianshuaff.com/#/?code=m28TvPVX',
+      'shandianshu': 'https://chenpin.shandianshuaff.com/#/?code=m28TvPVX',
+      'dalaoyun': 'https://chenpin01.dalaoyunaff.com/#/?code=GQ6CL6Km',
+      'dly': 'https://chenpin01.dalaoyunaff.com/#/?code=GQ6CL6Km',
+      'sxjs': 'https://chenpingan01.shenxingaff.com/#/?code=RZ48f9wP',
+      'shenxing': 'https://chenpingan01.shenxingaff.com/#/?code=RZ48f9wP',
+      'lly': 'https://chenpingan.liulianyunaff.com/#/?code=7pdjs9zt',
+      'liulianyun': 'https://chenpingan.liulianyunaff.com/#/?code=7pdjs9zt',
+      'hqt': 'https://chenpingan01.huanqiutiaff.com/#/?code=FGCcYdFo',
+      'huanqiuti': 'https://chenpingan01.huanqiutiaff.com/#/?code=FGCcYdFo',
+      'yjx': 'https://chenpingan.yunjiexianaff.com/#/?code=xLJGaIHM',
+      'yunjiexian': 'https://chenpingan.yunjiexianaff.com/#/?code=xLJGaIHM',
+      'jly': 'https://haozevpn.jlyvipaff.com/#/?code=6h2TMD5b',
+      'jilianyun': 'https://haozevpn.jlyvipaff.com/#/?code=6h2TMD5b',
+      'gnt': 'https://gnt001.gntvipaff.cc/#/?code=rN3ybxa7',
+      'guangnianti': 'https://gnt001.gntvipaff.cc/#/?code=rN3ybxa7',
+      'byjd': 'https://wep.edgenovaaff.com/#/?code=papME7sh',
+      'edgenova': 'https://wep.edgenovaaff.com/#/?code=papME7sh',
+      'sj': 'https://pygllc.speedworldaff.cc/#/?code=ll8LjYBJ',
+      'speedworld': 'https://pygllc.speedworldaff.cc/#/?code=ll8LjYBJ',
+      'sujie': 'https://pygllc.speedworldaff.cc/#/?code=ll8LjYBJ',
+      'kl': 'https://fanxiaobin.kuailiaff.com/#/?code=sOX6N4Tp',
+      'kuaili': 'https://fanxiaobin.kuailiaff.com/#/?code=sOX6N4Tp',
+      'kxy': 'https://everett7623.kosingaff.com//#/?code=Jl6dWU0G',
+      'kexinyun': 'https://everett7623.kosingaff.com//#/?code=Jl6dWU0G',
+      'sy': 'https://ddd.jichang.best/#/register?code=weN73kGq',
+      'shunyun': 'https://ddd.jichang.best/#/register?code=weN73kGq',
+      'yt': 'https://super.ytjcok.org/#/register?code=BKvuyYJI',
+      'yuntu': 'https://super.ytjcok.org/#/register?code=BKvuyYJI',
+      'kpjs': 'https://kunpengjiasu.com/#/register?code=oBWoiCcv',
+      'kunpeng': 'https://kunpengjiasu.com/#/register?code=oBWoiCcv'
+    };
+
+    function resolveTarget() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('id') || params.get('target') || params.get('aff');
+        if (id && AFF_MAP[id.toLowerCase()]) {
+          return AFF_MAP[id.toLowerCase()];
+        }
+        var pathParts = window.location.pathname.split('/').filter(Boolean);
+        var last = pathParts[pathParts.length - 1];
+        if (last && AFF_MAP[last.toLowerCase()]) {
+          return AFF_MAP[last.toLowerCase()];
+        }
+      } catch (e) {}
+      return '/rankings/best/';
+    }
+
+    var destUrl = resolveTarget();
+    // Instant 0ms redirect
+    if (window.location.replace) {
+      window.location.replace(destUrl);
+    } else {
+      window.location.href = destUrl;
+    }
+  </script>
+</head>
+<body>
+  <div class="redirect-card">
+    <div class="spinner-ring"></div>
+    <h1 class="title">正在安全跳转至目标服务商...</h1>
+    <p class="desc">梯子避坑社为您实施合规链路安全隔离与无痕重定向。<br>若未自动跳转，请点击下方直达通道：</p>
+    <a id="btn-redirect" class="btn-forward" href="/rankings/best/" rel="nofollow sponsored noopener noreferrer">
+      <span>立即前往目标页面</span>
+      <span>→</span>
+    </a>
+    <div class="security-note">HTTP 301 ISOLATION · NOINDEX NOFOLLOW</div>
+  </div>
+  <script>
+    var b = document.getElementById('btn-redirect');
+    if (b) b.href = destUrl;
+  </script>
+</body>
+</html>

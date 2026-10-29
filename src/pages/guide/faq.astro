@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import {
+  Compass,
+  ArrowRight,
+  ArrowLeft,
+  AlertCircle,
+  Clock,
+  CheckCircle2,
+  ChevronRight,
+  Zap,
+  Wrench,
+  WifiOff,
+  HelpCircle
+} from 'lucide-react'
+import { DocSidebar } from '../../components/doc/DocSidebar'
+import { MobileDocDrawer } from '../../components/doc/MobileDocDrawer'
+
+const pageMeta = {
+  title: '阶段三 · 故障排查：网络连接正常但打不开网页？常见排障中心 - 梯子避坑社',
+  description: '节点测速正常但打不开网页？全节点红色 Timeout 超时？全面解决系统代理冲突、时间偏差、DNS 污染与 TUN 模式失效。',
+  lastUpdated: '2026-10-26',
+  readingTime: '6 分钟'
+}
+
+const faqList = [
+  {
+    question: '为什么所有节点突然全部变红显示「Timeout / 超时」？',
+    answer: '90% 的突发全节点超时是由于本地设备系统时间与标准北京时间偏差超过 90 秒。现代安全协议基于时间戳验证，时间不准会导致 TLS 握手直接被服务器拒绝。解决方法：进入系统设置，开启「自动设置时间」并点击「立即同步」。此外，请检查套餐流量是否耗尽或服务商是否更换了订阅域名。'
+  },
+  {
+    question: '开启代理后浏览器报错 ERR_PROXY_CONNECTION_FAILED？',
+    answer: '这是由于上次关机时客户端未正常关闭，残留的系统代理注册表依然指向本地 7890 端口，但代理程序实际并未运行。解决方法：重新打开 Clash Verge Rev，或在 Windows 网络设置中关闭「手动设置代理服务器」开关。'
+  },
+  {
+    question: '浏览器可以正常访问外网，但 CMD 命令行、Git、Telegram 桌面版连不上？',
+    answer: '普通系统代理仅对主动读取系统注册表代理的浏览器（如 Chrome/Edge）生效。对于命令行工具、Steam 社区和游戏客户端，必须开启客户端的「TUN 模式 (Tun Mode)」，由虚拟网卡在网络三层接管所有数据包。'
+  },
+  {
+    question: '节点显示延迟只有 30ms，但打开 YouTube 4K 严重卡顿？',
+    answer: '客户端测出的延迟仅仅是本地设备到国内中转入口机的距离，不代表跨洋回程路由的真实速度。若晚高峰国际骨干网出口丢包严重（超过 5%），即使 Ping 很低也会导致 TCP 窗口骤降。建议切换为 CN2 GIA 或纯血 IPLC 专线节点。'
+  }
+]
+---
+
+<BaseLayout
+  title={pageMeta.title}
+  description={pageMeta.description}
+  ogType="article"
+  articleMeta={{
+    publishedTime: pageMeta.lastUpdated,
+    modifiedTime: pageMeta.lastUpdated,
+    tags: ['故障排查', 'Timeout超时', 'ERR_PROXY', 'TUN模式', 'DNS污染'],
+    author: '梯子避坑社技术专家组'
+  }}
+  faqItems={faqList}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {/* Breadcrumbs */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+      <a href="/getting-started" class="hover:text-emerald-500 transition-colors">新手入门</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium" aria-current="page">常见排障中心 (STEP 03)</span>
+    </nav>
+
+    <div class="flex gap-10">
+      {/* Left Category Multi-level Sidebar (Desktop) */}
+      <aside class="w-64 flex-shrink-0 hidden lg:block">
+        <div class="sticky top-24">
+          <DocSidebar
+            client:load
+            currentPath="/guide/faq/"
+          />
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0 max-w-4xl">
+      {/* Title & Metadata */}
+      <div class="mb-8 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60 uppercase tracking-wider">
+            STEP 03 · 故障排查
+          </span>
+          <span class="text-xs text-zinc-400 flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" />
+            预计阅读 {pageMeta.readingTime}
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-3.5xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
+          连接正常但网页打不开？高频疑难与快速排障中心
+        </h1>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
+          排查本地系统时间偏差、代理端口冲突、DNS 污染、TUN 模式失效与节点超时，通过标准分层诊断流程 2 分钟内恢复网络连接。
+        </p>
+      </div>
+
+      {/* Direct Answer Box */}
+      <div class="my-6 p-5 rounded-2xl border-l-4 border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 text-zinc-800 dark:text-zinc-200">
+        <div class="font-bold flex items-center gap-2 mb-2 text-sm text-amber-900 dark:text-amber-300">
+          <Zap className="w-4 h-4 text-amber-500" />
+          <span>【四步排障速查口诀 / Direct Answer】</span>
+        </div>
+        <ol class="list-decimal pl-5 text-xs sm:text-sm leading-6 opacity-95 space-y-1">
+          <li><strong>同步系统时间</strong>：确保手机或电脑时间精确到秒（TLS 证书握手硬性依赖）。</li>
+          <li><strong>检查代理端口</strong>：确认客户端已启动且 7890 端口未被其他程序占用。</li>
+          <li><strong>开启 TUN 虚拟网卡</strong>：解决 Git、命令行、Telegram 及游戏不走代理问题。</li>
+          <li><strong>切换网络环境</strong>：从家庭 Wi-Fi 切换为手机 5G 热点，快速定位是否为路由器 DNS 污染。</li>
+        </ol>
+      </div>
+
+      {/* High Frequency Troubleshooting QA */}
+      <section class="my-10" aria-labelledby="troubleshoot-heading">
+        <h2 id="troubleshoot-heading" class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+          一、四大高频断连故障针对性解决
+        </h2>
+
+        <div class="space-y-4 my-6">
+          {faqList.map((item, idx) => (
+            <div class="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/70">
+              <div class="flex items-start gap-3">
+                <span class="flex-shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono mt-0.5">
+                  Q{idx + 1}
+                </span>
+                <div class="space-y-2">
+                  <h3 class="text-sm sm:text-base font-bold text-zinc-900 dark:text-zinc-100">
+                    {item.question}
+                  </h3>
+                  <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {item.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Deep Link Topic Cluster */}
+      <div class="my-8 p-6 rounded-2xl bg-zinc-100/70 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
+        <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-3 flex items-center gap-2">
+          <Compass className="w-4 h-4 text-emerald-500" />
+          <span>进阶排障与环境体检工具箱</span>
+        </h3>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+          <li>
+            <a href="/troubleshoot" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              🛠️ 综合故障排查诊断手册（分层排除法） →
+            </a>
+          </li>
+          <li>
+            <a href="/kb/clients/clash-tun-mode" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              🌐 Clash TUN 模式虚拟网卡接管与 DNS 劫持 →
+            </a>
+          </li>
+          <li>
+            <a href="/kb/handbook/security-privacy" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              🛡️ 安全与隐私防护：DNS 泄漏与 WebRTC 检测 →
+            </a>
+          </li>
+          <li>
+            <a href="/tools" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              🧰 实用在线工具箱：订阅转换与在线检测 →
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Navigation Footer */}
+      <div class="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a
+          href="/guide/clients/"
+          class="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          返回 STEP 02 多端配置上手
+        </a>
+        <a
+          href="/getting-started"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-100 font-medium text-xs transition-colors cursor-pointer no-underline"
+        >
+          <span>回到新手入门总览</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+      </main>
+    </div>
+  </div>
+
+  {/* Mobile Floating Drawer for Multi-level Nav & TOC */}
+  <MobileDocDrawer client:load currentPath="/guide/faq/" />
+</BaseLayout>

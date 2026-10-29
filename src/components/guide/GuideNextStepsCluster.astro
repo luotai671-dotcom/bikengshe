@@ -1,0 +1,424 @@
+---
+import {
+  ArrowRight,
+  LifeBuoy,
+  Compass,
+  Wrench,
+  WifiOff,
+  ShoppingBag,
+  Sliders,
+  Terminal,
+  BookOpen,
+  Laptop,
+  Zap,
+  ShieldAlert,
+  Lock,
+  Network,
+  ChevronDown,
+  HelpCircle,
+  FileText
+} from 'lucide-react'
+
+interface Props {
+  className?: string
+  stuckBadge?: string
+  routeBadge?: string
+  readsBadge?: string
+  currentPath?: string
+}
+
+const {
+  className = '',
+  stuckBadge = '05',
+  routeBadge = '06',
+  readsBadge = '07',
+  currentPath = ''
+} = Astro.props
+
+export const guideFaqItems = [
+  {
+    question: '连上了但网页打不开？',
+    iconName: 'WifiOff',
+    iconColor: 'text-rose-500 bg-rose-50 dark:bg-rose-950/80 border-rose-200 dark:border-rose-800/60',
+    answer: '最常见的 4 大原因：1. 系统代理开关未勾选：客户端核心虽运行但未接管系统代理；2. 订阅节点超时不可用：节点已失效或套餐欠费，请在节点列表运行延迟 Ping 测试选择绿色节点；3. 本地系统时间偏差：VMess / VLESS / Trojan 协议要求本地时间误差在 90 秒内；4. 终端/游戏绕过代理：开启客户端的 TUN 虚拟网卡模式即可接管全量网络协议栈。',
+    link: '/guide/faq/',
+    linkText: '进入排障中心查看 10 项分层排查手册 →'
+  },
+  {
+    question: '机场怎么选？',
+    iconName: 'ShoppingBag',
+    iconColor: 'text-emerald-500 bg-emerald-50 dark:bg-emerald-950/80 border-emerald-200 dark:border-emerald-800/60',
+    answer: '牢记三大避坑铁律：1. 坚守“小额月付”原则：切勿轻信所谓大额折扣购买年付或永久买断套餐，防跑路与线路劣化是第一准则；2. 按实际业务选线路：日常 4K 追剧选高性价比 BGP 中转节点；代码提交、外企办公与联机首选合规跨国专线传输的 IPLC/IEPL 物理专线；3. 准备备用容灾：务必在客户端内保留 1~2 条不同服务商的线路作为应急容灾备份。',
+    link: '/buying',
+    linkText: '查看服务商选购指南与横向对比 →'
+  },
+  {
+    question: '日常使用应该选哪个分流模式？全局（Global）还是规则（Rule）？',
+    iconName: 'Sliders',
+    iconColor: 'text-cyan-500 bg-cyan-50 dark:bg-cyan-950/80 border-cyan-200 dark:border-cyan-800/60',
+    answer: '日常必须始终保持「Rule（规则分流）」模式！国内网站（百度、淘宝、微信、B站）走直连不耗跨境网络加速流量且不降速；仅海外被阻断网站走代理。全局模式强制所有流量走代理，会导致国内 App 极卡、甚至触发网银和微信异地登录风控。',
+    link: '/kb/concepts/routes-explained',
+    linkText: '查看分流规则与路由科普 →'
+  },
+  {
+    question: '为什么终端 Git、Telegram 或 Steam 联机游戏无法科学出海？',
+    iconName: 'Terminal',
+    iconColor: 'text-indigo-500 bg-indigo-50 dark:bg-indigo-950/80 border-indigo-200 dark:border-indigo-800/60',
+    answer: '普通系统代理只能自动接管支持 HTTP/Socks5 环境变量的浏览器流量，对不遵从系统代理的终端命令行（PowerShell / Git）、桌面客户端（Telegram）和大型网络游戏无效。在客户端中一键开启 TUN 模式（虚拟网卡接管），虚拟网卡会接管操作系统网络协议栈的所有流量。',
+    link: '/kb/clients/clash-tun-mode',
+    linkText: '查阅 Clash TUN 模式虚拟网卡详解 →'
+  }
+]
+
+export const pathRouteItems = [
+  {
+    location: '上一步',
+    locationTag: 'PREV',
+    badgeClass: 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700',
+    target: '首页',
+    targetSub: '极简技术与网络工具指南库',
+    href: '/'
+  },
+  {
+    location: '还没服务',
+    locationTag: 'STEP 01',
+    badgeClass: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60',
+    target: '1 分钟选方案',
+    targetSub: '场景化需求与预算快速决策',
+    href: '/guide/selection/'
+  },
+  {
+    location: '已有订阅',
+    locationTag: 'STEP 02',
+    badgeClass: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300 border-cyan-200 dark:border-cyan-800/60',
+    target: '零基础订阅教程',
+    targetSub: '从零配置 5 步建立稳定基线',
+    href: '/getting-started'
+  },
+  {
+    location: '遇到故障',
+    locationTag: 'STEP 03',
+    badgeClass: 'bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300 border-amber-200 dark:border-amber-800/60',
+    target: '排障中心',
+    targetSub: '分层排查与网络连通诊断手册',
+    href: '/guide/faq/'
+  }
+]
+
+export const recommendedReads = [
+  {
+    title: '零基础订阅教程 — 完整 5 步',
+    desc: '从零开始理清账号、订阅与客户端核心逻辑，建立第一次网络成功基线。',
+    tag: '新手首选',
+    badgeClass: 'border-emerald-200 dark:border-emerald-800/60 bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400',
+    href: '/guide/quick-start/',
+    iconName: 'BookOpen',
+    isFeatured: true
+  },
+  {
+    title: '各平台客户端配置',
+    desc: 'Windows、Mac、iOS、Android 全端开源代理工具安装与一键导入指引。',
+    tag: '多端上手',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/clients/',
+    iconName: 'Laptop'
+  },
+  {
+    title: '1 分钟选方案',
+    desc: '根据日常学习、外贸交互、AI 提效与海外游戏需求，快速定位适合方案。',
+    tag: '选型决策',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/solution-picker/',
+    iconName: 'Zap'
+  },
+  {
+    title: '选机场不踩坑',
+    desc: '坚持小额月付原则，揭秘跑路套路与晚高峰骨干网断流成因。',
+    tag: '避坑指南',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/avoid-scams/',
+    iconName: 'ShieldAlert'
+  },
+  {
+    title: '排障指南',
+    desc: '三层金字塔排查法：系统代理、DNS 污染劫持、时间偏差与断流秒级恢复。',
+    tag: '核心诊断',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/troubleshooting/',
+    iconName: 'Wrench'
+  },
+  {
+    title: '名词解释',
+    desc: 'Fake-IP、TUN 虚拟网卡、分流规则、BGP 中转等网络工程核心名词全览。',
+    tag: '核心概念',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/glossary/',
+    iconName: 'FileText'
+  },
+  {
+    title: '安全与隐私',
+    desc: '代理环境下的密码安全、DNS 泄漏防护、WebRTC 防追踪与合规防线。',
+    tag: '合规安全',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/security-privacy/',
+    iconName: 'Lock'
+  },
+  {
+    title: '线路科普：直连与专线对比',
+    desc: '深度解析普通公网直连、BGP 中转与 IPLC/IEPL 物理专线网络拓扑。',
+    tag: '线路深度',
+    badgeClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400',
+    href: '/guide/line-analysis/',
+    iconName: 'Network'
+  }
+]
+---
+
+<div class={`space-y-14 mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 ${className}`}>
+  {/* ========================================================
+      01 (图1) 卡住时 (急救指引 Banner + 结构化语义 FAQ 折叠卡)
+      ======================================================== */}
+  <section aria-labelledby="stuck-heading">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold border border-emerald-500/20 shadow-xs">
+          {stuckBadge}
+        </span>
+        <h2 id="stuck-heading" class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          <LifeBuoy className="w-5 h-5 text-emerald-500" />
+          <span>卡住时</span>
+          <span class="text-xs text-zinc-500 dark:text-zinc-400 font-normal hidden sm:inline ml-2">
+            高频疑问速查 · 30秒自检定位90%常见连接问题
+          </span>
+          <a href="#stuck-heading" class="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-emerald-500 transition-opacity text-sm ml-1" aria-label="Anchor link">#</a>
+        </h2>
+      </div>
+      <span class="text-xs text-zinc-400 hidden md:inline">即开即查 · 纯静态抓取</span>
+    </div>
+
+    <div class="space-y-4">
+      {/* Next Step Action Banner (图1 升级版：急救指引导航中枢) */}
+      <div class="relative overflow-hidden p-5 sm:p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-50/70 via-white to-teal-50/40 dark:from-emerald-950/30 dark:via-zinc-900 dark:to-zinc-950 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
+              <Compass className="w-3.5 h-3.5 text-emerald-500" />
+              下一步行动指引
+            </span>
+          </div>
+          <span class="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+            完整步骤在教程页 · 故障诊断在排障中心
+          </span>
+        </div>
+
+        <h3 class="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-2">
+          操作遇到阻碍？点击下方核心快捷通道对症排查
+        </h3>
+        
+        {/* 4 个快捷通道交互卡片 */}
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
+          <a
+            href="/getting-started"
+            class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/60 shadow-xs hover:shadow-md transition-all group"
+          >
+            <BookOpen className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" />
+            <span>零基础教程</span>
+          </a>
+          <a
+            href="/tools"
+            class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/60 shadow-xs hover:shadow-md transition-all group"
+          >
+            <Wrench className="w-4 h-4 text-teal-500 group-hover:scale-110 transition-transform" />
+            <span>订阅链接检测</span>
+          </a>
+          <a
+            href="/tools"
+            class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/60 shadow-xs hover:shadow-md transition-all group"
+          >
+            <Zap className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+            <span>实用工具箱</span>
+          </a>
+          <a
+            href="/guide/faq/"
+            class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white dark:bg-zinc-800/90 border border-zinc-200/90 dark:border-zinc-700/80 text-xs font-semibold text-zinc-800 dark:text-zinc-200 hover:text-rose-600 dark:hover:text-rose-400 hover:border-rose-500/60 shadow-xs hover:shadow-md transition-all group"
+          >
+            <ShieldAlert className="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" />
+            <span>排障中心</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Accordion FAQ Items (图1 下方折叠卡片：精致交互卡片化) */}
+      <div class="space-y-3">
+        {guideFaqItems.map((faq) => (
+          <details class="group rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-950/70 hover:border-emerald-500/50 hover:shadow-sm transition-all duration-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-4 sm:p-5 cursor-pointer list-none font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors select-none">
+              <div class="flex items-center gap-3">
+                <span class={`w-7 h-7 rounded-lg flex items-center justify-center border text-xs flex-shrink-0 ${faq.iconColor}`}>
+                  {faq.iconName === 'WifiOff' && <WifiOff className="w-3.5 h-3.5" />}
+                  {faq.iconName === 'ShoppingBag' && <ShoppingBag className="w-3.5 h-3.5" />}
+                  {faq.iconName === 'Sliders' && <Sliders className="w-3.5 h-3.5" />}
+                  {faq.iconName === 'Terminal' && <Terminal className="w-3.5 h-3.5" />}
+                </span>
+                <span class="tracking-tight">{faq.question}</span>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-3">
+                <ChevronDown className="w-4 h-4" />
+              </span>
+            </summary>
+            
+            <div class="px-5 pb-5 pt-1 text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed border-t border-zinc-100 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/40">
+              <p class="pt-3">{faq.answer}</p>
+              {faq.link && (
+                <div class="pt-3">
+                  <a
+                    href={faq.link}
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-xs font-semibold transition-colors"
+                  >
+                    <span>{faq.linkText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ========================================================
+      02 (图2) 路径条 (告别旧表格！升级为响应式 4 步流转卡片矩阵)
+      ======================================================== */}
+  <section aria-labelledby="route-heading">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold border border-emerald-500/20 shadow-xs">
+          {routeBadge}
+        </span>
+        <h2 id="route-heading" class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          <Compass className="w-5 h-5 text-emerald-500" />
+          <span>路径条</span>
+          <span class="text-xs text-zinc-500 dark:text-zinc-400 font-normal hidden sm:inline ml-2">
+            全景旅程流转 · 根据您当前阶段快速跳转
+          </span>
+          <a href="#route-heading" class="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-emerald-500 transition-opacity text-sm ml-1" aria-label="Anchor link">#</a>
+        </h2>
+      </div>
+      <span class="text-xs text-zinc-400 hidden md:inline">阶段式导航</span>
+    </div>
+
+    {/* 4 步现代交互流转卡片 */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+      {pathRouteItems.map((item) => (
+        <a
+          href={item.href}
+          class="group relative flex flex-col justify-between p-4 sm:p-5 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-950/70 hover:border-emerald-500/60 hover:shadow-lg dark:hover:shadow-emerald-950/20 hover:-translate-y-1 transition-all duration-200 no-underline"
+        >
+          <div>
+            {/* Top Row: Stage Tag + Stage Status */}
+            <div class="flex items-center justify-between mb-3">
+              <span class={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border ${item.badgeClass}`}>
+                {item.locationTag}
+              </span>
+              <span class="text-xs font-bold text-zinc-500 dark:text-zinc-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                {item.location}
+              </span>
+            </div>
+
+            {/* Target Destination Title */}
+            <h3 class="text-sm sm:text-base font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-1.5">
+              {item.target}
+            </h3>
+
+            {/* Subtitle */}
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+              {item.targetSub}
+            </p>
+          </div>
+
+          {/* Bottom Action Footer */}
+          <div class="pt-3 mt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300">
+            <span>前往该节点</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* ========================================================
+      03 (图3) 推荐阅读 (升级为 2 列高转化专题卡片网格，拒绝单列臃肿)
+      ======================================================== */}
+  <section aria-labelledby="reads-heading">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold border border-emerald-500/20 shadow-xs">
+          {readsBadge}
+        </span>
+        <h2 id="reads-heading" class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-emerald-500" />
+          <span>推荐阅读</span>
+          <span class="text-xs text-zinc-500 dark:text-zinc-400 font-normal hidden sm:inline ml-2">
+            核心知识库精选 · 覆盖选型、客户端、排障与网络拓扑
+          </span>
+          <a href="#reads-heading" class="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-emerald-500 transition-opacity text-sm ml-1" aria-label="Anchor link">#</a>
+        </h2>
+      </div>
+      <span class="text-xs text-zinc-400 hidden md:inline">共 8 篇专题进阶</span>
+    </div>
+
+    {/* 2 列响应式卡片网格 (4 行 x 2 列) */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {recommendedReads.map((card) => (
+        <a
+          href={card.href}
+          class={`group flex flex-col justify-between p-4 sm:p-5 rounded-2xl border transition-all duration-200 no-underline ${
+            card.isFeatured
+              ? 'border-emerald-500/60 bg-gradient-to-br from-emerald-50/40 via-white to-teal-50/20 dark:from-emerald-950/30 dark:via-zinc-900/70 dark:to-zinc-950 hover:border-emerald-600 hover:shadow-lg dark:hover:shadow-emerald-950/20 hover:-translate-y-1'
+              : 'border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-950/70 hover:border-emerald-500/60 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/60 hover:shadow-md hover:-translate-y-1'
+          }`}
+        >
+          <div>
+            {/* Header: Icon + Title + Tag */}
+            <div class="flex items-start justify-between gap-2 mb-2.5">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  {card.iconName === 'BookOpen' && <BookOpen className="w-3.5 h-3.5" />}
+                  {card.iconName === 'Laptop' && <Laptop className="w-3.5 h-3.5" />}
+                  {card.iconName === 'Zap' && <Zap className="w-3.5 h-3.5" />}
+                  {card.iconName === 'ShieldAlert' && <ShieldAlert className="w-3.5 h-3.5" />}
+                  {card.iconName === 'Wrench' && <Wrench className="w-3.5 h-3.5" />}
+                  {card.iconName === 'FileText' && <FileText className="w-3.5 h-3.5" />}
+                  {card.iconName === 'Lock' && <Lock className="w-3.5 h-3.5" />}
+                  {card.iconName === 'Network' && <Network className="w-3.5 h-3.5" />}
+                </span>
+                <h3 class={`font-bold text-sm sm:text-base truncate transition-colors ${
+                  card.isFeatured
+                    ? 'text-emerald-700 dark:text-emerald-400 group-hover:text-emerald-800'
+                    : 'text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400'
+                }`}>
+                  {card.title}
+                </h3>
+              </div>
+              <span class={`text-[10px] font-mono px-2 py-0.5 rounded-md border flex-shrink-0 ${card.badgeClass}`}>
+                {card.tag}
+              </span>
+            </div>
+
+            {/* Description */}
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4 line-clamp-2">
+              {card.desc}
+            </p>
+          </div>
+
+          {/* Footer Action */}
+          <div class="pt-2.5 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300">
+            <span class="font-medium">立即阅读</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</div>

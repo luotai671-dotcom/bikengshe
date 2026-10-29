@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import {
+  Compass,
+  Home,
+  Trophy,
+  Wrench,
+  BookOpen,
+  ArrowRight,
+  ShieldCheck,
+  Search
+} from 'lucide-react'
+---
+
+<BaseLayout
+  title="404 - 页面未找到或已被重构迁移 - 梯子避坑社"
+  description="抱歉，您访问的页面不存在或已迁移。梯子避坑社为您准备了 2026 稳定节点综合推荐榜、网络排障决策树与全景极客百科直通车。"
+  canonicalURL="https://tizibks.com/404"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+    
+    <!-- 404 Badge & Error Code -->
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-xs font-mono font-bold mb-6 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span>HTTP 404 · PAGE NOT FOUND</span>
+    </div>
+
+    <!-- Main Heading -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight mb-4">
+      很抱歉，您访问的页面已迁移或不存在
+    </h1>
+
+    <!-- Explanatory Subtitle -->
+    <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10">
+      该页面可能已被重构整合、链接参数已更新，或输入了错误的 URL 路径。不用担心，梯子避坑社已为您准备了核心直通导航：
+    </p>
+
+    <!-- Core High-Conversion Card: 2026 稳定梯子选购直通车 -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/30 dark:border-emerald-500/30 shadow-xl shadow-emerald-500/5 mb-10 text-left relative overflow-hidden group">
+      <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700"></div>
+      
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-lg shadow-emerald-500/30">
+            <Trophy className="w-6 h-6" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-800/50">
+                核心直通推荐
+              </span>
+              <span class="text-xs text-zinc-400 dark:text-zinc-500">180天晚高峰持续压测</span>
+            </div>
+            <h2 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+              2026 稳定节点综合推荐榜（选购避坑直通车）
+            </h2>
+            <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+              拒绝年付被割与商业虚标，严选全自费月付、三网物理专线、原生住宅双 ISP 纯净节点。
+            </p>
+          </div>
+        </div>
+
+        <a
+          href="/rankings/best/"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold text-sm shadow-md shadow-emerald-500/25 transition-all whitespace-nowrap self-stretch sm:self-auto justify-center"
+        >
+          <span>立即前往选购直通车</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Matrix -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 text-left">
+      <a
+        href="/"
+        class="p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:shadow-md transition-all group"
+      >
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <div class="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+            <Home className="w-4 h-4" />
+          </div>
+          <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">返回网站首页</span>
+        </div>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400">重回站点主入口与最新测评导航</p>
+      </a>
+
+      <a
+        href="/wiki/"
+        class="p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:shadow-md transition-all group"
+      >
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <div class="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+            <BookOpen className="w-4 h-4" />
+          </div>
+          <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">全景极客百科库</span>
+        </div>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400">55 道高权重常见技术问答矩阵</p>
+      </a>
+
+      <a
+        href="/troubleshooting/"
+        class="p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:shadow-md transition-all group"
+      >
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <div class="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+            <Wrench className="w-4 h-4" />
+          </div>
+          <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">综合排障急救中心</span>
+        </div>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400">TUN 断网、全红超时与 DNS 自救决策树</p>
+      </a>
+
+      <a
+        href="/tools/tutorials/"
+        class="p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:shadow-md transition-all group"
+      >
+        <div class="flex items-center gap-2.5 mb-1.5">
+          <div class="p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+            <Compass className="w-4 h-4" />
+          </div>
+          <span class="font-bold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-500 transition-colors">全平台客户端教程</span>
+        </div>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400">Windows/Mac/iOS/Android 平滑展开实战</p>
+      </a>
+    </div>
+
+    <!-- Official Community Callout -->
+    <div class="inline-flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <span>若发现死链或页面丢失，欢迎前往：</span>
+      <a
+        href="https://t.me/shandianjiaoliu"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        class="text-sky-600 dark:text-sky-400 hover:underline font-semibold"
+      >
+        官方 Telegram 避坑社群反馈 →
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

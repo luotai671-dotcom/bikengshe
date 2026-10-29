@@ -1,0 +1,159 @@
+---
+import { Compass, ArrowRight, Layers, Sliders, Wrench, ShieldCheck, Zap } from 'lucide-react'
+
+interface Props {
+  className?: string
+  headingText?: string
+  subHeadingText?: string
+  showStepBadge?: boolean
+  stepBadgeText?: string
+  headingId?: string
+  isHero?: boolean
+}
+
+const {
+  className = '',
+  headingText = '快速定位你的配置进度',
+  subHeadingText = '根据你当前所处的阶段或遇到的网络痛点，点击直接进入对应专属指引：',
+  showStepBadge = true,
+  stepBadgeText = '01',
+  headingId = 'guide-decision-heading',
+  isHero = false
+} = Astro.props
+
+export interface DecisionCardItem {
+  step: string
+  phase: string
+  badgeColor: string
+  title: string
+  scenario: string
+  description: string
+  tags: string[]
+  btnText: string
+  href: string
+  iconName: string
+}
+
+const cards: DecisionCardItem[] = [
+  {
+    step: 'STEP 01',
+    phase: '阶段一 · 节点选型与避坑',
+    badgeColor: 'border-emerald-200 dark:border-emerald-800/70 bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400',
+    title: '面对大量专线与直连不知如何选择？',
+    scenario: '线路横评 · 专线避坑 · 选型决策',
+    description: '深度辨析普通公网直连、BGP 中转与 IPLC/IEPL 物理专线抗封锁差异；坚持“小额月付”防跑路原则，拒绝大额年付陷阱。',
+    tags: ['专线 vs 直连', '坚持月付', '防坑原则'],
+    btnText: '进入线路评测与选型库 →',
+    href: '/guide/selection/',
+    iconName: 'Layers'
+  },
+  {
+    step: 'STEP 02',
+    phase: '阶段二 · 多端快速上手',
+    badgeColor: 'border-cyan-200 dark:border-cyan-800/70 bg-cyan-50 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-400',
+    title: '手握订阅但客户端配置报错/分流失效？',
+    scenario: 'Windows · macOS · iOS · Android',
+    description: '认准官方开源客户端（Clash Verge Rev / 小火箭 / FlClash）；手把手导入配置，一键修复订阅报错并开启 TUN 虚拟网卡与规则分流。',
+    tags: ['配置导入', 'Clash Verge', 'TUN 模式'],
+    btnText: '进入多端实操指南 →',
+    href: '/guide/clients/',
+    iconName: 'Sliders'
+  },
+  {
+    step: 'STEP 03',
+    phase: '阶段三 · 急救与排错中心',
+    badgeColor: 'border-amber-200 dark:border-amber-800/70 bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400',
+    title: '节点 Ping 得通但网页/应用打不开？',
+    scenario: '无法上网 · 终端不通 · DNS污染',
+    description: '三层金字塔排查法：秒级诊断系统代理未勾选、DNS 污染劫持、系统时间偏差与游戏/终端应用绕过代理问题。',
+    tags: ['节点连通无网', '系统代理', 'DNS 排障'],
+    btnText: '进入排障决策树 →',
+    href: '/guide/faq/',
+    iconName: 'Wrench'
+  }
+]
+---
+
+<section
+  class={`my-8 p-6 sm:p-8 rounded-2xl border ${
+    isHero
+      ? 'border-emerald-500/30 bg-gradient-to-b from-white via-zinc-50/80 to-white dark:from-zinc-900/90 dark:via-zinc-900/60 dark:to-zinc-950 shadow-xl shadow-emerald-500/5'
+      : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/40 shadow-sm'
+  } ${className}`}
+  aria-labelledby={headingId}
+>
+  {/* Header Section with Semantic H2 */}
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-zinc-200/80 dark:border-zinc-800/80">
+    <div>
+      <div class="flex items-center gap-2 mb-1.5">
+        {showStepBadge && (
+          <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold font-mono border border-emerald-500/20">
+            {stepBadgeText}
+          </span>
+        )}
+        <h2 id={headingId} class="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          {headingText}
+        </h2>
+      </div>
+      <p class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+        {subHeadingText}
+      </p>
+    </div>
+    <div class="flex items-center gap-1.5 text-xs font-mono text-zinc-400 dark:text-zinc-500 self-start sm:self-auto flex-shrink-0">
+      <Compass className="w-4 h-4 text-emerald-500" />
+      <span class="uppercase tracking-wider">SCENARIO ROUTER</span>
+    </div>
+  </div>
+
+  {/* 3 Decision Cards Grid (纯语义化整卡可点击 <a> 标签，无嵌套冲突，内链权重畅通传递) */}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    {cards.map((card) => (
+      <a
+        href={card.href}
+        class="group relative flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-950/80 hover:border-emerald-500/60 hover:bg-emerald-50/20 dark:hover:bg-emerald-950/20 hover:shadow-xl hover:shadow-emerald-500/5 hover:-translate-y-1.5 active:scale-[0.99] transition-all duration-200 no-underline"
+      >
+        <div>
+          {/* Top Tag & Phase */}
+          <div class="flex items-center justify-between mb-3">
+            <span class={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md border tracking-wider ${card.badgeColor}`}>
+              {card.step}
+            </span>
+            <span class="text-[11px] font-medium text-zinc-400 dark:text-zinc-500">
+              {card.phase}
+            </span>
+          </div>
+
+          {/* Card Title */}
+          <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
+            {card.title}
+          </h3>
+
+          {/* Scenario subtitle pill */}
+          <div class="mt-2 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+            🎯 {card.scenario}
+          </div>
+
+          {/* Card Description */}
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mt-2.5">
+            {card.description}
+          </p>
+
+          {/* Keyword tags */}
+          <div class="flex flex-wrap items-center gap-1.5 mt-3.5 pt-3 border-t border-zinc-100 dark:border-zinc-800/60">
+            {card.tags.map((tag) => (
+              <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/60 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Action Button & Animated Arrow */}
+        <div class="mt-5 pt-3.5 border-t border-zinc-100 dark:border-zinc-800/70 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300">
+          <span>{card.btnText}</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

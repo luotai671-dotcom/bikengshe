@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #10b981;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4d4d8;
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: #27272a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1aa;
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+}
+
+/* High contrast readability enhancements */
+article.prose {
+  font-size: 15.5px;
+  line-height: 1.82;
+  letter-spacing: -0.01em;
+}
+
+.dark article.prose {
+  color: #e4e4e7;
+}
+
+.dark article.prose p {
+  color: #d4d4d8;
+}
+
+.dark article.prose li {
+  color: #d4d4d8;
+}
+
+.dark article.prose h1,
+.dark article.prose h2,
+.dark article.prose h3,
+.dark article.prose h4 {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.dark article.prose strong {
+  color: #ffffff;
+}
+
+.dark article.prose table {
+  color: #e4e4e7;
+}
+
+.dark article.prose th {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.dark article.prose td {
+  color: #d4d4d8;
+}
+
+/* Glassmorphism and animations - solid opaque to prevent text bleed-through */
+.glass-panel {
+  background: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.dark .glass-panel {
+  background: #09090b;
+}
+
+.mega-menu-shadow {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08), 0 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.dark .mega-menu-shadow {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Background grid effect */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+.dark .bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Topic Cluster & Content Internal Anchor Links */
+article.prose a:not([class*="toc-link"]) {
+  color: #059669;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: rgba(16, 185, 129, 0.45);
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+
+article.prose a:not([class*="toc-link"]):hover {
+  color: #047857;
+  text-decoration-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.08);
+  border-radius: 3px;
+}
+
+.dark article.prose a:not([class*="toc-link"]) {
+  color: #34d399;
+  text-decoration-color: rgba(52, 211, 153, 0.4);
+}
+
+.dark article.prose a:not([class*="toc-link"]):hover {
+  color: #6ee7b7;
+  text-decoration-color: #34d399;
+  background-color: rgba(52, 211, 153, 0.12);
+}
+

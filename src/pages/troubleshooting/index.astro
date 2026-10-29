@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { TroubleshootPage } from '../../components/interactive/TroubleshootPage'
+import { TROUBLESHOOTING_MENU_ITEMS } from '../../data/navigation'
+import { parseMarkdown } from '../../utils/markdown'
+import GuideNextStepsCluster from '../../components/guide/GuideNextStepsCluster.astro'
+import fs from 'node:fs'
+import path from 'node:path'
+import {
+  ChevronRight,
+  AlertTriangle,
+  Activity,
+  Wrench,
+  RefreshCw,
+  WifiOff,
+  ShieldAlert,
+  Terminal,
+  Zap,
+  Bot,
+  ArrowRight,
+  Layers,
+  AlignLeft,
+  ArrowUp,
+  Calendar,
+  Clock,
+  Tag,
+  BookOpen
+} from 'lucide-react'
+
+// Read the complete pillar markdown article from disk
+const mdPath = path.resolve('./troubleshooting/index.md')
+const rawMd = fs.readFileSync(mdPath, 'utf-8')
+const content = rawMd.replace(/^---[\s\S]*?---\s*/, '')
+const { html, headings } = parseMarkdown(content, '/troubleshooting')
+
+// Extract structured FAQ items for Schema.org JSON-LD injection
+let faqItems: Array<{ question: string; answer: string }> = []
+const regex = /###\s+(?:Q\d+[:：]\s*)?([^\n\r]+)[\r\n]+([\s\S]*?)(?=(?:###\s+|$))/g
+let match
+while ((match = regex.exec(content)) !== null) {
+  const q = match[1].trim()
+  const a = match[2].replace(/[*_#`]/g, '').trim()
+  if (q && a && (q.includes('？') || q.includes('?'))) {
+    faqItems.push({ question: q, answer: a.slice(0, 300) })
+  }
+}
+---
+
+<BaseLayout
+  title="排障总览与故障诊断树：全平台客户端与网络分流故障秒级定位指南 - 梯子避坑社"
+  description="面向全平台客户端与网络分流场景的工业级故障排查总索引。基于三大分类维度（报错现象、内核机制、操作系统）构建毫秒级排障决策树，系统性解决节点超时、系统代理死锁、TUN网卡崩溃与大模型403阻断。"
+  ogType="article"
+  faqItems={faqItems}
+  articleMeta={{
+    publishedTime: '2026-10-28',
+    modifiedTime: '2026-10-28',
+    tags: ['排障总览', '故障诊断树', '梯子连接排障', '科学上网故障诊断', 'Clash连接失败', 'TUN断网'],
+    author: '梯子避坑社技术专家组'
+  }}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    {/* 顶部面包屑导航 */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-8 overflow-x-auto pb-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors flex-shrink-0">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="text-zinc-700 dark:text-zinc-300 font-medium flex-shrink-0">故障排查中心</span>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium truncate" aria-current="page">排障总览与故障诊断树</span>
+    </nav>
+
+    {/* 页面主标题区 */}
+    <div class="max-w-4xl mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 mb-3 shadow-sm">
+        <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
+        <span>故障排查场景诊断库 · 全景决策</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-3">
+        排障总览与故障诊断树：全平台客户端与网络分流故障秒级定位指南
+      </h1>
+      <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        告别无头绪盲目试错。本中心基于「本地协议栈 -> 虚拟网卡驱动 -> 远程服务节点」三层金字塔排查法，精确定位网络死锁、假连通与严重超售根因。
+      </p>
+    </div>
+
+    {/* 9 大高频故障主题矩阵 (3 列网格 Card) */}
+    <div class="mb-14">
+      <div class="flex items-center justify-between pb-3 mb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div class="flex items-center gap-2">
+          <Layers className="w-4 h-4 text-amber-500" />
+          <h2 class="text-lg font-bold text-zinc-900 dark:text-white">
+            9 大高频网络故障场景决策矩阵
+          </h2>
+        </div>
+        <span class="text-xs text-zinc-400">整卡可点击 · 语义化内链索引</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {TROUBLESHOOTING_MENU_ITEMS.map((item) => (
+          <a
+            href={item.href}
+            class="group flex flex-col p-5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-amber-500/60 hover:shadow-lg dark:hover:shadow-amber-950/20 hover:-translate-y-0.5 transition-all duration-200 no-underline"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/50">
+                <AlertTriangle className="w-4 h-4" />
+              </span>
+              {item.badge && (
+                <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">
+                  {item.badge}
+                </span>
+              )}
+            </div>
+            <h3 class="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1 mb-4 flex-1 leading-relaxed">
+              {item.description}
+            </p>
+            <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-amber-600 dark:text-amber-400">
+              <span>进入专题排障</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {/* 交互式排障诊断树组件 */}
+    <div class="mb-16">
+      <div class="flex items-center gap-2 mb-6">
+        <Wrench className="w-5 h-5 text-emerald-500" />
+        <h2 class="text-xl font-bold text-zinc-900 dark:text-white">
+          交互式故障自诊树与急救开关
+        </h2>
+      </div>
+      <TroubleshootPage client:load />
+    </div>
+
+    {/* ======================================================== */}
+    {/* 核心 Pillar 长文区（左侧文章正文 + 右侧目录 TOC 浮动栏） */}
+    {/* ======================================================== */}
+    <div class="pt-10 border-t border-zinc-200 dark:border-zinc-800">
+      <div class="flex gap-10">
+        {/* 文章主体 */}
+        <main class="flex-1 min-w-0 max-w-4xl">
+          {/* 文章元数据 */}
+          <div class="mb-8 pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80">
+            <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 mb-3">
+              <span class="px-2.5 py-0.5 rounded-full font-medium bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60 flex items-center gap-1">
+                <BookOpen className="w-3 h-3" />
+                全景决策 Pillar 文档
+              </span>
+              <span class="flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5" />
+                更新于 2026-10-28
+              </span>
+              <span class="flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5" />
+                预计阅读 15 分钟
+              </span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 mt-3">
+              {['排障总览', '故障诊断树', '梯子连接排障', '科学上网故障诊断', 'Clash连接失败', 'TUN断网'].map((tag) => (
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400">
+                  <Tag className="w-3 h-3 text-amber-500" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* 渲染 Markdown HTML */}
+          <article
+            class="prose prose-zinc dark:prose-invert prose-emerald max-w-none text-zinc-800 dark:text-zinc-200 leading-relaxed"
+            set:html={html}
+          />
+
+          {/* 底部推荐阅读矩阵与指引 */}
+          <GuideNextStepsCluster
+            className="mt-14"
+            currentPath="/troubleshooting"
+            stuckBadge="05"
+            routeBadge="06"
+            readsBadge="07"
+          />
+        </main>
+
+        {/* 右侧悬浮目录 (TOC) */}
+        {headings.length > 0 && (
+          <aside class="w-64 flex-shrink-0 hidden xl:block">
+            <div class="sticky top-24 pl-6 border-l border-zinc-200 dark:border-zinc-800 text-sm">
+              <span class="flex items-center gap-1.5 font-medium text-zinc-700 dark:text-zinc-300 mb-4">
+                <AlignLeft className="w-3.5 h-3.5 text-amber-500" />
+                本文目录
+              </span>
+              <nav class="space-y-1 max-h-[calc(100vh-220px)] overflow-y-auto pr-2 custom-scrollbar">
+                {headings.map((item) => (
+                  <a
+                    href={`#${item.id}`}
+                    class={`block py-1 text-xs transition-colors truncate ${
+                      item.level === 3 ? 'pl-4 text-zinc-400' : 'pl-0 text-zinc-600 dark:text-zinc-300 font-medium'
+                    } hover:text-amber-600 dark:hover:text-amber-400`}
+                  >
+                    {item.text}
+                  </a>
+                ))}
+              </nav>
+
+              <div class="mt-6 pt-4 border-t border-zinc-200/60 dark:border-zinc-800/60">
+                <button
+                  onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                  class="flex items-center gap-2 text-xs text-zinc-500 hover:text-amber-600 dark:text-zinc-400 dark:hover:text-amber-400 transition-colors cursor-pointer"
+                >
+                  <ArrowUp className="w-3.5 h-3.5" />
+                  回到顶部
+                </button>
+              </div>
+            </div>
+          </aside>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

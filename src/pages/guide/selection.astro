@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import {
+  Compass,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle2,
+  AlertTriangle,
+  Layers,
+  ShieldCheck,
+  Zap,
+  DollarSign,
+  ChevronRight,
+  Clock,
+  Calendar
+} from 'lucide-react'
+import { DocSidebar } from '../../components/doc/DocSidebar'
+import { MobileDocDrawer } from '../../components/doc/MobileDocDrawer'
+
+const pageMeta = {
+  title: '阶段一 · 选型决策：机场、自建 VPS 与专线协议选购指南 - 梯子避坑社',
+  description: '面向新手的阶段一选型决策指南。客观对比机场订阅、自建 VPS（VLESS Reality/Hysteria2）与 IPLC 专线，解析晚高峰丢包与避坑原则。',
+  lastUpdated: '2026-10-26',
+  readingTime: '6 分钟'
+}
+---
+
+<BaseLayout
+  title={pageMeta.title}
+  description={pageMeta.description}
+  ogType="article"
+  articleMeta={{
+    publishedTime: pageMeta.lastUpdated,
+    modifiedTime: pageMeta.lastUpdated,
+    tags: ['选型决策', '机场选购', '自建VPS', 'IPLC专线', '避坑指南'],
+    author: '梯子避坑社技术专家组'
+  }}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {/* Breadcrumbs */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+      <a href="/getting-started" class="hover:text-emerald-500 transition-colors">新手入门</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium" aria-current="page">选型决策指南 (STEP 01)</span>
+    </nav>
+
+    <div class="flex gap-10">
+      {/* Left Category Multi-level Sidebar (Desktop) */}
+      <aside class="w-64 flex-shrink-0 hidden lg:block">
+        <div class="sticky top-24">
+          <DocSidebar
+            client:load
+            currentPath="/guide/selection/"
+          />
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0 max-w-4xl">
+      {/* Title & Metadata */}
+      <div class="mb-8 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 uppercase tracking-wider">
+            STEP 01 · 选型决策
+          </span>
+          <span class="text-xs text-zinc-400 flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" />
+            预计阅读 {pageMeta.readingTime}
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-3.5xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-tight">
+          还没挑选到合适的节点？科学上网选型决策全景指南
+        </h1>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
+          先搞清楚商业机场、自建 VPS 与点对点 IPLC 专线的核心差异；避开超卖与一次性大额年付陷阱，选择适合自己预算与业务场景的最佳方案。
+        </p>
+      </div>
+
+      {/* Direct Answer Box (GEO / AI 搜索友好) */}
+      <div class="my-6 p-5 rounded-2xl border-l-4 border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 text-zinc-800 dark:text-zinc-200">
+        <div class="font-bold flex items-center gap-2 mb-2 text-sm text-emerald-900 dark:text-emerald-300">
+          <Zap className="w-4 h-4 text-emerald-500" />
+          <span>【核心决策结论 / Direct Answer】</span>
+        </div>
+        <p class="text-xs sm:text-sm leading-6 opacity-95">
+          <strong>普通用户首选「BGP 中转或 IPLC 专线商业服务商（机场）」</strong>，零维护成本，多国节点秒开，配合流媒体解锁最省心；<strong>开发者、金融交易与隐私强迫症首选「自建 VPS + <a href="/kb/vps/vless-reality" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">VLESS Reality</a> / <a href="/kb/vps/hysteria2-setup" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">Hysteria2</a>」</strong>，完全独享无日志。<strong>选购第一准则：坚决月付体验，警惕低价超长大额套餐！</strong>
+        </p>
+      </div>
+
+      {/* Comparison Table */}
+      <section class="my-10" aria-labelledby="matrix-heading">
+        <h2 id="matrix-heading" class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+          一、三大方案核心多维度对比决策矩阵
+        </h2>
+
+        <div class="my-5 overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead class="bg-zinc-100/90 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-semibold border-b border-zinc-200 dark:border-zinc-800">
+              <tr>
+                <th class="p-3.5">对比维度</th>
+                <th class="p-3.5">商业机场 (中转/专线)</th>
+                <th class="p-3.5">自建 VPS (单机节点)</th>
+                <th class="p-3.5">纯血 IPLC / IEPL 专线</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800/60 text-zinc-700 dark:text-zinc-300">
+              <tr>
+                <td class="p-3.5 font-medium text-zinc-900 dark:text-zinc-100">隐私与数据安全</td>
+                <td class="p-3.5">★★★☆☆ (取决于运营方商誉)</td>
+                <td class="p-3.5 font-bold text-emerald-600 dark:text-emerald-400">★★★★★ (完全独享，零日志)</td>
+                <td class="p-3.5">★★★★☆ (企业级内网通道)</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-medium text-zinc-900 dark:text-zinc-100">技术维护成本</td>
+                <td class="p-3.5 font-bold text-emerald-600 dark:text-emerald-400">零门槛 (一键导入即用)</td>
+                <td class="p-3.5">需懂 Linux 运维、IP 被墙换 IP</td>
+                <td class="p-3.5">零门槛 (服务商运维)</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-medium text-zinc-900 dark:text-zinc-100">晚高峰丢包表现</td>
+                <td class="p-3.5">2% - 5% (BGP 中转良好)</td>
+                <td class="p-3.5">普通线路 15-30% / GIA &lt;1%</td>
+                <td class="p-3.5 font-bold text-emerald-600 dark:text-emerald-400">&lt; 0.5% (物理专线合规跨国专线传输)</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-medium text-zinc-900 dark:text-zinc-100">流媒体/AI 解锁</td>
+                <td class="p-3.5 font-bold text-emerald-600 dark:text-emerald-400">标配原生解锁 (NF/ChatGPT)</td>
+                <td class="p-3.5">通常为机房 IP，需自建 DNS 解锁</td>
+                <td class="p-3.5">优秀 (落地配置原生住宅 IP)</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-medium text-zinc-900 dark:text-zinc-100">典型月均成本</td>
+                <td class="p-3.5">¥15 - ¥35 / 月</td>
+                <td class="p-3.5">$3 - $10 / 月 (折合 ¥25-70)</td>
+                <td class="p-3.5">¥40 - ¥100 / 月</td>
+              </tr>
+              <tr>
+                <td class="p-3.5 font-medium text-zinc-900 dark:text-zinc-100">适合人群</td>
+                <td class="p-3.5"><strong>80% 大众用户、追剧与日常办公</strong></td>
+                <td class="p-3.5"><strong>开发者、技术极客、高隐私需求</strong></td>
+                <td class="p-3.5"><strong>外贸大客户、跨境金融、零容忍断连</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* 3 Golden Rules for Buying */}
+      <section class="my-10" aria-labelledby="rules-heading">
+        <h2 id="rules-heading" class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-100 dark:border-zinc-800">
+          二、新手避坑的三大黄金法则
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+          <div class="p-4.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/60">
+            <div class="flex items-center gap-2 mb-2 font-bold text-sm text-zinc-900 dark:text-zinc-100">
+              <span class="text-base text-rose-500 font-mono">01</span>
+              <span>坚决贯彻「月付原则」</span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              任何鼓吹“两年 ¥99、永久买断”的商家跑路风险高达 90%。先买一个月，在晚上 8:30 晚高峰实测 YouTube 4K 和丢包率，满意后再考虑季度续费。
+            </p>
+          </div>
+
+          <div class="p-4.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/60">
+            <div class="flex items-center gap-2 mb-2 font-bold text-sm text-zinc-900 dark:text-zinc-100">
+              <span class="text-base text-emerald-500 font-mono">02</span>
+              <span>认准骨干线路真实 AS 域</span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              拒绝奸商的虚假直连宣传。掌握使用 NextTrace 鉴别真实回程跳数的方法，详细辨析请参阅 <a href="/kb/vps/cn2-9929-cmi-diff" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">CN2 GIA、9929 与 CMI 深度解析</a>。
+            </p>
+          </div>
+
+          <div class="p-4.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/60">
+            <div class="flex items-center gap-2 mb-2 font-bold text-sm text-zinc-900 dark:text-zinc-100">
+              <span class="text-base text-cyan-500 font-mono">03</span>
+              <span>测速不看 Ping，看有效吞吐</span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              在客户端测出的 30ms 仅仅是到国内入口的距离。真实网络质量请参考 <a href="/kb/concepts/speed-test-guide" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">网络测速指南：看懂下行带宽与真实丢包</a>。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Deep Link Topic Cluster */}
+      <div class="my-8 p-6 rounded-2xl bg-zinc-100/70 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
+        <h3 class="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-3 flex items-center gap-2">
+          <Compass className="w-4 h-4 text-emerald-500" />
+          <span>相关专题深度内链延伸阅读</span>
+        </h3>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+          <li>
+            <a href="/buying" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              🛒 服务商选购指南：避坑原则与横向对比 →
+            </a>
+          </li>
+          <li>
+            <a href="/kb/concepts/routes-explained" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              🌐 线路科普：直连、中转、IPLC 专线全方位解析 →
+            </a>
+          </li>
+          <li>
+            <a href="/kb/vps/vless-reality" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              ⚡ 自建免域名协议：VLESS Reality 搭建与反探测 →
+            </a>
+          </li>
+          <li>
+            <a href="/kb/vps/cn2-9929-cmi-diff" class="p-2.5 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500 text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 block transition-colors">
+              📊 2026 最新骨干网回程实测：CN2 GIA/9929/CMI →
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Next Step Navigation */}
+      <div class="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a
+          href="/getting-started"
+          class="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          返回新手入门总览
+        </a>
+        <a
+          href="/guide/clients/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors shadow-sm cursor-pointer no-underline"
+        >
+          <span>已拿到了节点？进入 STEP 02 多端配置上手</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+      </main>
+    </div>
+  </div>
+
+  {/* Mobile Floating Drawer for Multi-level Nav & TOC */}
+  <MobileDocDrawer client:load currentPath="/guide/selection/" />
+</BaseLayout>

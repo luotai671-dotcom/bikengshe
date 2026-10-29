@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { BuyingPage } from '../pages/BuyingPage'
+import {
+  ShoppingBag,
+  CheckCircle,
+  Sparkles,
+  ArrowRight
+} from 'lucide-react'
+---
+
+<BaseLayout
+  title="服务商选购指南：避坑原则与横向对比 - 梯子避坑社"
+  description="掌握核心评测指标，远离虚假测速宣传与跑路风险，选择最适合自己需求的节点方案与档位建议。"
+  ogType="article"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    {/* Header */}
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 mb-3">
+        <ShoppingBag className="w-3.5 h-3.5" />
+        <span>选购与评测指南</span>
+      </div>
+      <h1 class="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-3">
+        服务商选购指南：避坑原则与横向对比
+      </h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400">
+        掌握核心评测指标，远离虚假测速宣传与跑路风险，选择最适合自己需求的节点方案。
+      </p>
+    </div>
+
+    {/* 3 Core Rules */}
+    <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/20 mb-12">
+      <h2 class="text-base font-bold text-zinc-900 dark:text-white flex items-center gap-2 mb-3">
+        <Sparkles className="w-5 h-5 text-emerald-500" />
+        专业玩家给新手的选购三大铁律
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-zinc-600 dark:text-zinc-400">
+        <div class="flex items-start gap-2.5">
+          <span class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">01</span>
+          <div>
+            <strong class="text-zinc-900 dark:text-zinc-200 block mb-1">坚守月付原则</strong>
+            切勿被商家 1 折、2 折的年付大额诱惑，首选月付或季付，晚高峰测试一周后再做决定。
+          </div>
+        </div>
+        <div class="flex items-start gap-2.5">
+          <span class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">02</span>
+          <div>
+            <strong class="text-zinc-900 dark:text-zinc-200 block mb-1">看晚高峰丢包而非极限带宽</strong>
+            闲时能跑 1000M 毫无意义，真正决定体验的是 20:00-23:00 期间的延迟抖动与丢包率。
+          </div>
+        </div>
+        <div class="flex items-start gap-2.5">
+          <span class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">03</span>
+          <div>
+            <strong class="text-zinc-900 dark:text-zinc-200 block mb-1">准备异地多线备份</strong>
+            没有一家服务商能够保证 365 天 100% 不出故障，主力专线 + 廉价直连中转是最佳组合。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Pricing and Tier Matrix */}
+    <div id="budget" class="mb-14">
+      <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-4">
+        各档位预算梯队选型建议
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col">
+          <div class="text-xs font-mono text-zinc-400 mb-1">轻量备用 / 网页查资料</div>
+          <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">入门性价比型</h3>
+          <div class="text-2xl font-extrabold text-zinc-900 dark:text-white mb-4 font-mono">
+            ¥10 - ¥20 <span class="text-xs font-normal text-zinc-400">/ 月</span>
+          </div>
+          <ul class="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 mb-6 flex-1">
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              普通公网单线中转 / CMI 优化
+            </li>
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              基础网页浏览与 GitHub 代码拉取
+            </li>
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              适合作为二号备用节点
+            </li>
+          </ul>
+          <a
+            href="/kb/concepts/routes-explained"
+            class="w-full py-2 px-3 text-center rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-medium hover:bg-zinc-200 transition-colors"
+          >
+            了解线路差异
+          </a>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-emerald-500 dark:border-emerald-500 shadow-lg relative flex flex-col">
+          <div class="absolute -top-3 right-6 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500 text-white">
+            最推荐
+          </div>
+          <div class="text-xs font-mono text-emerald-600 dark:text-emerald-400 mb-1">
+            追剧娱乐 / 日常主力
+          </div>
+          <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">主流 BGP 中转型</h3>
+          <div class="text-2xl font-extrabold text-zinc-900 dark:text-white mb-4 font-mono">
+            ¥25 - ¥45 <span class="text-xs font-normal text-zinc-400">/ 月</span>
+          </div>
+          <ul class="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 mb-6 flex-1">
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              多地 BGP 优质入口智能调度
+            </li>
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              原生住宅 IP 解锁 Netflix / ChatGPT
+            </li>
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              4K 极速拖拽、晚高峰稳定性好
+            </li>
+          </ul>
+          <a
+            href="/kb/vps/cn2-9929-cmi-diff"
+            class="w-full py-2 px-3 text-center rounded-xl bg-emerald-600 text-white text-xs font-medium hover:bg-emerald-500 transition-colors"
+          >
+            对比骨干线路性能
+          </a>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col">
+          <div class="text-xs font-mono text-zinc-400 mb-1">远程办公 / 证券外汇 / 跨国路由震荡期</div>
+          <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2">纯血 IPLC 专线</h3>
+          <div class="text-2xl font-extrabold text-zinc-900 dark:text-white mb-4 font-mono">
+            ¥50 - ¥100+ <span class="text-xs font-normal text-zinc-400">/ 月</span>
+          </div>
+          <ul class="space-y-2.5 text-xs text-zinc-600 dark:text-zinc-400 mb-6 flex-1">
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              物理光缆专线，合规跨国专线传输不经过防火墙
+            </li>
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              超低抖动 (Jitter 1ms 内)，游戏不掉线
+            </li>
+            <li class="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+              重大敏感会议时期 100% 稳如泰山
+            </li>
+          </ul>
+          <a
+            href="/kb/concepts/routes-explained"
+            class="w-full py-2 px-3 text-center rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-medium hover:bg-zinc-200 transition-colors"
+          >
+            阅读专线科普
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

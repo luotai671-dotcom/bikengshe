@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { WIKI_CATEGORIES, WIKI_ARTICLES_LIST } from '../../../data/wikiArticles'
+import { WikiFaqAccordion } from '../../../components/wiki/WikiFaqAccordion'
+import {
+  ChevronRight,
+  BookOpen,
+  Calendar,
+  Clock,
+  Tag,
+  ArrowRight,
+  Sparkles,
+  ShieldCheck,
+  Compass
+} from 'lucide-react'
+
+export async function getStaticPaths() {
+  return WIKI_CATEGORIES.map((cat) => ({
+    params: { category: cat.id }
+  }))
+}
+
+const { category } = Astro.params
+const currentCategory = WIKI_CATEGORIES.find((c) => c.id === category) || WIKI_CATEGORIES[0]
+const categoryArticles = WIKI_ARTICLES_LIST.filter((a) => a.categorySlug === category)
+---
+
+<BaseLayout
+  title={`${currentCategory.name} - 极客百科与FAQ - 梯子避坑社`}
+  description={currentCategory.description}
+  ogType="website"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    {/* Breadcrumbs */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-8" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+      <a href="/wiki/" class="hover:text-emerald-500 transition-colors">极客百科与FAQ</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium" aria-current="page">{currentCategory.name}</span>
+    </nav>
+
+    {/* Category Header Hero */}
+    <div class="mb-10 pb-8 border-b border-zinc-200 dark:border-zinc-800">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 text-xs font-semibold mb-4">
+        <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+        <span>{currentCategory.badge} · 权威技术矩阵</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight mb-4">
+        【{currentCategory.name}】
+      </h1>
+      <p class="text-base text-zinc-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
+        {currentCategory.description}。汇集 10 篇网络工程级深度长文，每一篇均配备清晰的 Direct Answer 与可复现的技术验证，杜绝一切黑话与营销误导。
+      </p>
+
+      {/* Category Nav Quick Pill Bar */}
+      <div class="flex flex-wrap items-center gap-2 mt-6">
+        <span class="text-xs font-medium text-zinc-500 mr-1">切换类目:</span>
+        {WIKI_CATEGORIES.map((cat) => (
+          <a
+            href={cat.path}
+            class={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              cat.id === category
+                ? 'bg-emerald-500 text-white shadow-sm'
+                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+            }`}
+          >
+            {cat.shortName}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {/* 当处于 faq 分类时，首屏展示 55 道高权重问答手风琴矩阵 */}
+    {category === 'faq' && (
+      <div class="mb-14">
+        <WikiFaqAccordion client:load initialCategory="all" />
+      </div>
+    )}
+
+    {/* Articles Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {categoryArticles.map((article, idx) => (
+        <a
+          href={`/wiki/${article.categorySlug}/${article.slug}`}
+          class="group relative flex flex-col p-6 rounded-2xl bg-white dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          {/* Index & Badge */}
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200/50 dark:border-emerald-800/40">
+              TOP {String(idx + 1).padStart(2, '0')}
+            </span>
+            <span class="text-xs text-zinc-600 dark:text-zinc-300 font-medium flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5 text-zinc-400" />
+              {article.readingTime}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2 class="text-lg sm:text-xl font-extrabold text-zinc-950 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2.5 line-clamp-2">
+            {article.title}
+          </h2>
+
+          {/* Direct Answer Preview */}
+          <p class="text-[13.5px] sm:text-sm text-zinc-700 dark:text-zinc-200 leading-relaxed line-clamp-3 mb-4 flex-1 font-normal">
+            {article.directAnswer}
+          </p>
+
+          {/* Tags & Action */}
+          <div class="flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+            <div class="flex flex-wrap items-center gap-1.5">
+              {article.tags.slice(0, 3).map((tag) => (
+                <span class="text-xs font-medium px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              阅读全文
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* Bottom Cross Reference CTA */}
+    <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-50 to-zinc-100/60 dark:from-zinc-900/40 dark:to-zinc-900/80 border border-zinc-200 dark:border-zinc-800">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h3 class="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-1 flex items-center gap-2">
+            <Compass className="w-4 h-4 text-emerald-500" />
+            需要结合具体服务商实测？
+          </h3>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">
+            查阅 15 家主流专线服务商在晚高峰、大模型解锁与 4K 流媒体下的真实压测数据
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <a
+            href="/rankings/best/"
+            class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm transition-colors"
+          >
+            2026 稳定节点综合总榜 →
+          </a>
+          <a
+            href="/rankings/iplc-iepl/"
+            class="px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
+          >
+            晚高峰抗封锁专线评测榜 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

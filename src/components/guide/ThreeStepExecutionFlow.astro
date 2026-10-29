@@ -1,0 +1,306 @@
+---
+import {
+  AlertTriangle,
+  ShieldAlert,
+  ArrowRight,
+  CheckCircle2,
+  Laptop,
+  Smartphone,
+  Server,
+  Zap,
+  Lock,
+  Compass,
+  RefreshCw,
+  Sliders,
+  ExternalLink
+} from 'lucide-react'
+
+interface Props {
+  className?: string
+}
+
+const { className = '' } = Astro.props
+
+const clientPlatforms = [
+  {
+    name: 'Windows',
+    client: 'Clash Verge Rev',
+    tag: '主流首选',
+    tagClass: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60',
+    desc: '界面现代、自带 TUN 虚拟网卡接管系统流量',
+    href: '/kb/clients/clash-verge-windows'
+  },
+  {
+    name: 'macOS',
+    client: 'Clash Verge Rev',
+    tag: 'M芯片适配',
+    tagClass: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60',
+    desc: '原生支持 Apple Silicon，内存常驻极低',
+    href: '/kb/clients/clash-verge-macos'
+  },
+  {
+    name: 'iOS / iPad',
+    client: 'Shadowrocket (小火箭)',
+    tag: '苹果必备',
+    tagClass: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800/60',
+    desc: '全协议支持、规则分流极简，需美区 ID',
+    href: '/kb/clients/shadowrocket-guide'
+  },
+  {
+    name: 'Android',
+    client: 'FlClash',
+    tag: 'Material You',
+    tagClass: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800/60',
+    desc: '开源极简、动态配色、流畅省电无广告',
+    href: '/kb/clients/flclash-android'
+  },
+  {
+    name: '软路由/全屋',
+    client: 'OpenClash',
+    tag: '无感分流',
+    tagClass: 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-400 border-purple-200 dark:border-purple-800/60',
+    desc: '旁路由透明接管全屋，TV/主机游戏免客户端',
+    href: '/kb/vps/soft-router-proxy'
+  }
+]
+---
+
+<section class={`my-10 ${className}`} aria-labelledby="step-flow-heading">
+  {/* Section Header with Sleek 03 Numbered Badge */}
+  <div class="flex items-center gap-2.5 mb-6 pt-6 border-t border-zinc-200/90 dark:border-zinc-800/90 group">
+    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold border border-emerald-500/20">
+      03
+    </span>
+    <h2 id="03-标准上手三步操作流" class="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+      <span>标准上手三步操作流（实战落地与安全指南）</span>
+      <a href="#03-标准上手三步操作流" class="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-emerald-500 transition-opacity text-sm ml-1" aria-label="Anchor link">#</a>
+    </h2>
+  </div>
+
+  {/* Security Alert Banner (复刻并升级图1顶部的 Warning 框) */}
+  <div class="my-6 p-4 sm:p-5 rounded-2xl border-l-4 border-amber-500 bg-amber-500/10 dark:bg-amber-950/25 border border-amber-500/30 text-zinc-800 dark:text-zinc-200 shadow-sm relative overflow-hidden">
+    <div class="flex items-start gap-3.5">
+      <div class="p-2 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5">
+        <AlertTriangle className="w-5 h-5" />
+      </div>
+      <div class="space-y-1.5 flex-1 min-w-0">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="font-bold text-sm text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
+            把订阅链接当作密码处理（核心安全红线）
+          </span>
+          <a
+            href="/kb/handbook/security-privacy"
+            class="inline-flex items-center gap-1 text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline"
+          >
+            <span>防泄漏安全手册 →</span>
+          </a>
+        </div>
+        <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+          把订阅链接当作密码处理。<strong>只粘贴到官方来源的可信开源客户端</strong>；怀疑泄露时，第一时间到服务商后台重置订阅，再删除旧配置并重新导入。<strong>公开求助时务必隐藏链接、Token、节点地址、账号和完整 IP</strong>。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* 3 Steps Pipeline (垂直时间轴卡片流) */}
+  <div class="space-y-6 mt-6">
+    {/* STEP 1: 拿到可用订阅 */}
+    <div class="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/80 shadow-sm hover:border-emerald-500/40 transition-all group">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 text-white font-mono font-bold text-sm flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+          1
+        </div>
+        <div class="space-y-3 flex-1 min-w-0">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 id="第一步-拿到可用订阅" class="text-base font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                拿到可用订阅 (Get Valid Subscription)
+              </h3>
+              <span class="text-[11px] font-mono px-2 py-0.2 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                CONFIG URL
+              </span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              还没有服务商时先走选型决策方案；已购买服务则登录控制台面板，复制专属的 Clash 或通用订阅链接。
+            </p>
+          </div>
+
+          {/* Action Cards Grid for Step 1 */}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <a
+              href="/guide/selection/"
+              class="p-3.5 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 hover:border-emerald-500/50 transition-all flex items-center justify-between no-underline"
+            >
+              <div>
+                <span class="text-[11px] text-zinc-400 font-mono">还没有服务商？</span>
+                <div class="text-xs font-bold text-zinc-800 dark:text-zinc-200 mt-0.5 group-hover:text-emerald-600">
+                  查看选型决策指南 (STEP 01)
+                </div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-emerald-500" />
+            </a>
+
+            <a
+              href="/buying"
+              class="p-3.5 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 hover:border-emerald-500/50 transition-all flex items-center justify-between no-underline"
+            >
+              <div>
+                <span class="text-[11px] text-zinc-400 font-mono">选购避坑原则</span>
+                <div class="text-xs font-bold text-zinc-800 dark:text-zinc-200 mt-0.5 group-hover:text-emerald-600">
+                  服务商横向测评与月付避坑
+                </div>
+              </div>
+              <ArrowRight className="w-4 h-4 text-emerald-500" />
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500 pt-1">
+            <span>💡 格式不兼容？</span>
+            <a href="/tools" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">
+              使用在线订阅格式转换工具 →
+            </a>
+            <span class="text-zinc-300 dark:text-zinc-700">|</span>
+            <a href="/kb/clients/clash-import" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">
+              详细订阅导入指引 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* STEP 2: 按设备装客户端 */}
+    <div class="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/80 shadow-sm hover:border-emerald-500/40 transition-all group">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 text-white font-mono font-bold text-sm flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+          2
+        </div>
+        <div class="space-y-3 flex-1 min-w-0">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 id="第二步-按设备装客户端" class="text-base font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                按设备装客户端 (Install Recommended Client)
+              </h3>
+              <span class="text-[11px] font-mono px-2 py-0.2 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                OFFICIAL ONLY
+              </span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              在平台列表中选择对应系统的推荐开源工具，<strong>只认准官方开源仓库（GitHub Releases）或正规应用商店</strong>，杜绝搜索引擎第三方二次打包木马。
+            </p>
+          </div>
+
+          {/* Quick Platform Cards Carousel / Grid */}
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+            {clientPlatforms.map((item) => (
+              <a
+                href={item.href}
+                class="p-3.5 rounded-xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 hover:border-emerald-500/50 transition-all flex flex-col justify-between no-underline group/item"
+              >
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-bold text-zinc-800 dark:text-zinc-200">
+                      {item.name}
+                    </span>
+                    <span class={`text-[10px] font-mono px-1.5 py-0.2 rounded border ${item.tagClass}`}>
+                      {item.tag}
+                    </span>
+                  </div>
+                  <div class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover/item:underline">
+                    {item.client}
+                  </div>
+                  <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-1">
+                    {item.desc}
+                  </p>
+                </div>
+                <div class="mt-2.5 pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60 text-[11px] text-zinc-400 group-hover/item:text-emerald-500 flex items-center justify-between">
+                  <span>查看配置教程</span>
+                  <ArrowRight className="w-3 h-3 group-hover/item:translate-x-1 transition-transform" />
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="pt-1">
+            <a
+              href="/guide/clients/"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+            >
+              <span>查看多端配置上手总览中心 (STEP 02) →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* STEP 3: 导入并验证 */}
+    <div class="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/80 shadow-sm hover:border-emerald-500/40 transition-all group">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 text-white font-mono font-bold text-sm flex items-center justify-center shadow-md shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+          3
+        </div>
+        <div class="space-y-3 flex-1 min-w-0">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 id="第三步-导入并验证" class="text-base font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                导入并验证连通性 (Import & Verify)
+              </h3>
+              <span class="text-[11px] font-mono px-2 py-0.2 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                RULE + TUN
+              </span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              导入订阅后开启 <strong>Rule（规则分流）</strong> + <strong>系统代理</strong>，优先使用 Google、YouTube 4K 或 GitHub 验证连通性，再测试真正要用的生产力服务。
+            </p>
+          </div>
+
+          {/* Verification Checklist */}
+          <div class="p-4 rounded-xl border border-zinc-200/90 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-900/40 space-y-2 text-xs">
+            <div class="font-bold text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5 mb-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+              <span>四步通畅验证清单：</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-zinc-600 dark:text-zinc-400">
+              <div class="flex items-center gap-1.5">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>节点连通测速：Ping 延迟数值显示正常</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>分流保持规则（Rule）：国内网站直连不耗流量</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>开启 TUN 模式：接管游戏、终端 Git 与全量 UDP</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-emerald-500 font-bold">✓</span>
+                <span>YouTube 4K 播放：详细信息无断流、无掉帧</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action & Troubleshooting Links */}
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500">
+              <span>遇到问题？</span>
+              <a href="/guide/faq/" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">
+                进入常见排障中心 (STEP 03) →
+              </a>
+              <span class="text-zinc-300 dark:text-zinc-700">|</span>
+              <a href="/troubleshoot" class="text-emerald-600 dark:text-emerald-400 font-semibold underline">
+                综合故障排查诊断手册 →
+              </a>
+            </div>
+            <a
+              href="/kb/clients/clash-tun-mode"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500 hover:text-white transition-all text-xs font-semibold no-underline"
+            >
+              <Zap className="w-3.5 h-3.5" />
+              <span>进阶：开启 TUN 虚拟网卡接管 →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

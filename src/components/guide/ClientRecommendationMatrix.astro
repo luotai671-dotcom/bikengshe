@@ -1,0 +1,159 @@
+---
+import { ArrowRight, Zap, CheckCircle2 } from 'lucide-react'
+
+interface Props {
+  className?: string
+  showHeading?: boolean
+  headingId?: string
+}
+
+const {
+  className = '',
+  showHeading = true,
+  headingId = '05-平台主流客户端推荐与对比'
+} = Astro.props
+
+export interface DeviceTutorialCard {
+  id: string
+  platform: string
+  badge: string
+  badgeClass: string
+  tool: string
+  desc: string
+  actionText: string
+  href: string
+  isFeatured?: boolean
+}
+
+const tutorialRows: DeviceTutorialCard[] = [
+  {
+    id: 'selector',
+    platform: '先选平台',
+    badge: '全端总览',
+    badgeClass: 'bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700',
+    tool: '多端客户端选型全景页',
+    desc: 'Windows / macOS / iOS / Android 的推荐客户端与配置入口集中在这里，支持按设备快速定位。',
+    actionText: '客户端选择页',
+    href: '/guide/clients/'
+  },
+  {
+    id: 'windows',
+    platform: 'Windows',
+    badge: 'Win 10/11',
+    badgeClass: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60',
+    tool: 'Clash Verge Rev',
+    desc: '桌面端主力首选，基于 Tauri + Mihomo 核心，规则模式与 TUN 虚拟网卡模式极度成熟。',
+    actionText: 'Windows 教程',
+    href: '/kb/clients/clash-verge-windows'
+  },
+  {
+    id: 'macos',
+    platform: 'macOS',
+    badge: 'M芯片适配',
+    badgeClass: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60',
+    tool: 'Clash Verge Rev',
+    desc: '原生适配 Apple Silicon (M1-M4)，内存常驻仅数十 MB，适合日常浏览、AI 大模型和开发终端。',
+    actionText: 'macOS 教程',
+    href: '/kb/clients/clash-verge-macos'
+  },
+  {
+    id: 'ios',
+    platform: 'iPhone / iPad',
+    badge: '装机必备',
+    badgeClass: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800/60',
+    tool: 'Shadowrocket / Stash',
+    desc: '国内最普及的苹果规则代理神器，全协议支持，扫码即用；需登录美区 App Store 账号下载。',
+    actionText: 'iOS 教程',
+    href: '/kb/clients/shadowrocket-guide',
+    isFeatured: true
+  },
+  {
+    id: 'android',
+    platform: 'Android',
+    badge: '安卓全机型',
+    badgeClass: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-400 border-cyan-200 dark:border-cyan-800/60',
+    tool: 'FlClash / v2rayNG',
+    desc: 'FlClash 采用 Google Material You 动态设计更适合新手；v2rayNG 底层核心更轻量省电。',
+    actionText: 'Android 对比',
+    href: '/kb/clients/flclash-android'
+  },
+  {
+    id: 'router',
+    platform: '软路由 / 全屋',
+    badge: '全屋无感',
+    badgeClass: 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-400 border-purple-200 dark:border-purple-800/60',
+    tool: 'OpenClash / ShellCrash',
+    desc: '家庭网关旁路由透明分流，Apple TV、PS5、Switch 游戏主机与智能家居免客户端无感代理。',
+    actionText: '全屋分流',
+    href: '/kb/vps/soft-router-proxy'
+  }
+]
+---
+
+<section class={`my-10 ${className}`} aria-labelledby={headingId}>
+  {/* Section Heading with 05 Badge */}
+  {showHeading && (
+    <div class="flex items-center gap-2.5 mb-3 pt-6 border-t border-zinc-200/90 dark:border-zinc-800/90 group">
+      <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold border border-emerald-500/20">
+        05
+      </span>
+      <h2 id={headingId} class="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
+        <span>按设备进入教程：主流客户端推荐与专属配置入口</span>
+        <a href={`#${headingId}`} class="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-emerald-500 transition-opacity text-sm ml-1" aria-label="Anchor link">#</a>
+      </h2>
+    </div>
+  )}
+
+  {/* Subtitle matching Image 1 */}
+  <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-5">
+    先打开客户端选择页，再进入对应系统教程；认准官方开源仓库（GitHub Releases）或正规应用商店：
+  </p>
+
+  {/* GEO Direct Answer Box (AI 搜索引擎摘要提取前置) */}
+  <div class="my-5 p-4 sm:p-5 rounded-2xl border-l-4 border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 text-zinc-800 dark:text-zinc-200 shadow-sm">
+    <div class="font-bold flex items-center gap-2 mb-2 text-xs sm:text-sm text-emerald-900 dark:text-emerald-300">
+      <Zap className="w-4 h-4 text-emerald-500" />
+      <span>【多端客户端选型结论 / Direct Answer】</span>
+    </div>
+    <p class="text-xs sm:text-sm leading-6 opacity-95">
+      电脑端（Windows / macOS）首选自带 TUN 虚拟网卡的 <strong>Clash Verge Rev</strong>；苹果手机（iPhone / iPad）首选 <strong>Shadowrocket（小火箭）</strong>；安卓手机首选 Material You 极简开源的 <strong>FlClash</strong>；家庭全屋分流首选旁路由网关部署的 <strong>OpenClash</strong>。日常使用请始终保持<strong>「规则（Rule）」</strong>分流模式，遇终端与游戏绕过代理时开启 <strong>TUN 模式</strong>。
+    </p>
+  </div>
+
+  {/* High-Converting Horizontal Device Action Cards (基于图1深度优化，使用 CSS Grid 杜绝换行溢出) */}
+  <div class="space-y-3 my-6">
+    {tutorialRows.map((row) => (
+      <a
+        href={row.href}
+        class={`group block p-4 sm:p-5 rounded-2xl border transition-all duration-200 no-underline ${
+          row.isFeatured
+            ? 'border-emerald-500/40 bg-emerald-50/40 dark:bg-emerald-950/25 hover:border-emerald-500 hover:shadow-lg hover:shadow-emerald-500/5'
+            : 'border-zinc-200/90 dark:border-zinc-800/90 bg-white dark:bg-zinc-950/70 hover:border-emerald-500/50 hover:bg-zinc-50/60 dark:hover:bg-zinc-900/40 hover:shadow-md hover:shadow-zinc-200/20 dark:hover:shadow-none'
+        }`}
+      >
+        <div class="grid grid-cols-1 sm:grid-cols-[145px_1fr_auto] lg:grid-cols-[165px_1fr_auto] items-center gap-3 sm:gap-5">
+          {/* Left Column: Platform Name & Badge */}
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <span class="font-bold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+              {row.platform}
+            </span>
+            <span class={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded border ${row.badgeClass}`}>
+              {row.badge}
+            </span>
+          </div>
+
+          {/* Center Column: Clear Technical Description & Recommendation */}
+          <div class="text-xs sm:text-[13px] text-zinc-600 dark:text-zinc-400 leading-relaxed group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors min-w-0">
+            <strong class="font-semibold text-zinc-800 dark:text-zinc-200">{row.tool}</strong>：{row.desc}
+          </div>
+
+          {/* Right Column: High-contrast green action link with hover arrow */}
+          <div class="flex items-center justify-end gap-1.5 text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors whitespace-nowrap self-end sm:self-auto pt-2 sm:pt-0 border-t sm:border-t-0 border-zinc-100 dark:border-zinc-800/60">
+            <span>{row.actionText}</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

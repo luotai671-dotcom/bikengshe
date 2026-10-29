@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /assets/
+
+# Sitemap
+Sitemap: https://tizibks.com/sitemap.xml

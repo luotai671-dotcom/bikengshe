@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { ToolsPage } from '../components/interactive/ToolsPage'
+
+const faqItems = [
+  {
+    question: "什么是网络订阅格式转换？为什么需要进行订阅转换？",
+    answer: "网络订阅格式转换是将服务商下发的通用节点格式（如 V2Ray、Shadowsocks、Trojan 链接）重构为特定客户端专用配置文件（如 Clash 的 YAML、Sing-Box 的 JSON、Surge 的 CONF）的过程。它能帮助用户在不同客户端之间自由迁移，并自动注入精细化的国内外分流策略组。"
+  },
+  {
+    question: "第三方开源客户端与机场定制客户端有什么区别？哪个更安全？",
+    answer: "第三方开源客户端（如 Clash Verge Rev、Shadowrocket、Sing-Box）代码完全开源受全球极客审计，无任何后门与流量劫持，支持多服务商混用；而机场定制客户端多为闭源打包程序，往往内置私有强制代理规则、存在数据窃取或捆绑风险，且一旦服务商跑路软件立即废弃。强烈建议优先使用第三方开源客户端。"
+  },
+  {
+    question: "为什么不建议使用来路不明的公共 Web 订阅转换平台？",
+    answer: "公共 Web 订阅转换平台的所有请求都会经过第三方服务器，不法运营者可通过日志截获你的专属订阅 Token 盗取流量，甚至在下发配置中恶意注入重定向规则劫持访问流量。建议优先使用客户端原生导入、本地离线转换或自行搭建私有 subconverter 服务。"
+  },
+  {
+    question: "订阅转换后导入客户端提示 YAML 语法错误（Config Error）该如何解决？",
+    answer: "YAML 错误通常由于节点名称中包含特殊非标准字符、转换后端模板缩进错误或冒号后缺少英文半角空格引起。可通过本页面的症状诊断卡片检查格式，或直接在客户端订阅设置中切换转换后端或更新内核至最新版本。"
+  }
+]
+---
+
+<BaseLayout
+  title="实用工具箱：在线订阅转换、多端客户端选型与网络诊断中心 - 梯子避坑社"
+  description="集成在线订阅格式转换引擎、全平台第三方开源客户端教程、IP纯净度与WebRTC泄漏检测，以及高频故障秒级排障决策矩阵。"
+  ogType="website"
+  faqItems={faqItems}
+>
+  <ToolsPage client:load />
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { ClientTutorialsHub } from '../../components/tutorials/ClientTutorialsHub'
+import { ChevronRight, Wrench, ShieldCheck, BookOpen } from 'lucide-react'
+
+const tutorialFaqItems = [
+  {
+    question: "为什么推荐使用第三方开源客户端，而不是机场自己定制的客户端？",
+    answer: "第三方开源客户端（如 Clash Verge Rev、Sing-box、Shadowrocket、Stash）源码在全球 GitHub 社区公开，经过万千安全人员审计，无任何后门与隐私收集。而机场定制客户端多为闭源打包软件，存在注入私有分流劫持、强制修改系统证书乃至泄露个人数据的严重安全隐患，且一旦服务商倒闭软件立即作废。"
+  },
+  {
+    question: "什么是 TUN 虚拟网卡模式？为什么建议在电脑端必开？",
+    answer: "TUN 模式通过在操作系统内核层创建虚拟网卡接管全机网络流量（L3 网络层接管），能够彻底解决常规系统代理模式无法代理命令行（Terminal/PowerShell）、Git、Docker、游戏以及 Telegram 等不遵守系统代理环境变量软件的痛点。"
+  },
+  {
+    question: "苹果 iOS 端没有美区 Apple ID 如何下载 Shadowrocket（小火箭）？",
+    answer: "Shadowrocket（小火箭）因合规要求仅在非国区 App Store 上架。新手用户建议在苹果官网注册一个免绑定信用卡的免费美区 Apple ID，并在正规电商平台或苹果官网购买美区 App Store 礼品卡（Gift Card）充值兑换，切勿在来路不明的公共账号中登录 iCloud，谨防设备被远程锁定锁机。"
+  },
+  {
+    question: "客户端成功连接但网页打不开、显示无法连接互联网如何排查？",
+    answer: "常见原因包括：1. 系统时间与标准北京时间偏差超过 90 秒导致 TLS 握手握锁；2. 本地杀毒软件或多代理客户端（如旧版 Clash 与新版 Verge 同时运行）发生系统代理端口竞争；3. 未在分流规则中选中有效工作的出口节点。建议参考站内【排障诊断树】按图索骥逐步排查。"
+  }
+]
+---
+
+<BaseLayout
+  title="全平台客户端实战配置教程库（Windows/macOS/iOS/Android/TV/软路由）- 梯子避坑社"
+  description="涵盖 Clash Verge Rev、Sing-box、Shadowrocket 小火箭、Stash、v2rayNG、Apple TV 及 OpenWrt 软路由等 16 款主流客户端保姆级配置图文教程。拒绝钓鱼改包，提供正版 GitHub 下载直达与核心开关设置。"
+  ogType="website"
+  faqItems={tutorialFaqItems}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    {/* 面包屑导航 */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-6 overflow-x-auto pb-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors flex-shrink-0">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <a href="/tools" class="hover:text-emerald-500 transition-colors flex-shrink-0">工具中心</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium truncate" aria-current="page">全平台客户端实战教程库</span>
+    </nav>
+
+    {/* 客户端交互中心主组件 */}
+    <ClientTutorialsHub client:load />
+  </div>
+</BaseLayout>

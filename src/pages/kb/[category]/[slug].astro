@@ -1,0 +1,371 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { KNOWLEDGE_BASE_COLUMNS } from '../../../data/navigation'
+import { getArticleData } from '../../../utils/articleLoader'
+import { parseMarkdown, getRelatedTopicCluster } from '../../../utils/markdown'
+import {
+  ChevronRight,
+  Clock,
+  Calendar,
+  Tag,
+  Share2,
+  ArrowLeft,
+  ArrowRight,
+  AlignLeft,
+  ArrowUp,
+  Hash,
+  Network,
+  Sparkles
+} from 'lucide-react'
+
+import { TOPIC_CLUSTER_RULES } from '../../../utils/markdown'
+import { ARTICLES_MAP } from '../../../data/articles'
+import { DocSidebar } from '../../../components/doc/DocSidebar'
+import { MobileDocDrawer } from '../../../components/doc/MobileDocDrawer'
+
+export async function getStaticPaths() {
+  const pathMap = new Map<string, { category: string; slug: string; itemHref: string; categoryId: string; categoryTitle: string }>()
+
+  // 1. From KNOWLEDGE_BASE_COLUMNS
+  for (const col of KNOWLEDGE_BASE_COLUMNS) {
+    for (const item of col.items) {
+      const match = item.href.match(/^\/kb\/([^\/]+)\/([^\/]+)$/)
+      if (match) {
+        const key = `${match[1]}/${match[2]}`
+        pathMap.set(key, {
+          category: match[1],
+          slug: match[2],
+          itemHref: item.href,
+          categoryId: col.id,
+          categoryTitle: col.title
+        })
+      }
+    }
+  }
+
+  // 2. From TOPIC_CLUSTER_RULES
+  for (const rule of TOPIC_CLUSTER_RULES) {
+    const match = rule.href.match(/^\/kb\/([^\/]+)\/([^\/]+)$/)
+    if (match) {
+      const key = `${match[1]}/${match[2]}`
+      if (!pathMap.has(key)) {
+        const matchedCol = KNOWLEDGE_BASE_COLUMNS.find(c => c.id === match[1])
+        pathMap.set(key, {
+          category: match[1],
+          slug: match[2],
+          itemHref: rule.href,
+          categoryId: match[1],
+          categoryTitle: matchedCol?.title || rule.category
+        })
+      }
+    }
+  }
+
+  // 3. From ARTICLES_MAP
+  for (const articleKey of Object.keys(ARTICLES_MAP)) {
+    const match = articleKey.match(/^kb\/([^\/]+)\/([^\/]+)$/)
+    if (match) {
+      const key = `${match[1]}/${match[2]}`
+      if (!pathMap.has(key)) {
+        const article = ARTICLES_MAP[articleKey]
+        const matchedCol = KNOWLEDGE_BASE_COLUMNS.find(c => c.id === match[1])
+        pathMap.set(key, {
+          category: match[1],
+          slug: match[2],
+          itemHref: `/${articleKey}`,
+          categoryId: match[1],
+          categoryTitle: matchedCol?.title || article.category
+        })
+      }
+    }
+  }
+
+  return Array.from(pathMap.values()).map(p => ({
+    params: { category: p.category, slug: p.slug },
+    props: { itemHref: p.itemHref, categoryId: p.categoryId, categoryTitle: p.categoryTitle }
+  }))
+}
+
+const { category, slug } = Astro.params
+const { itemHref, categoryId, categoryTitle } = Astro.props
+
+const currentPath = `/kb/${category}/${slug}`
+const article = getArticleData(currentPath)
+const { html, headings } = parseMarkdown(article.content, currentPath)
+const relatedClusters = getRelatedTopicCluster(currentPath, category)
+
+// Find siblings in the same category column
+const currentCategoryCol = KNOWLEDGE_BASE_COLUMNS.find(c => c.id === category)
+let prevArticle = null
+let nextArticle = null
+if (currentCategoryCol) {
+  const currentIndex = currentCategoryCol.items.findIndex(i => i.href === `/kb/${category}/${slug}`)
+  if (currentIndex > 0) prevArticle = currentCategoryCol.items[currentIndex - 1]
+  if (currentIndex >= 0 && currentIndex < currentCategoryCol.items.length - 1) {
+    nextArticle = currentCategoryCol.items[currentIndex + 1]
+  }
+}
+
+// Extract FAQ items for FAQPage schema if available
+let faqItems: Array<{ question: string; answer: string }> = []
+if (slug === 'faq' || article.content.includes('## Q')) {
+  const regex = /##\s+(?:Q\d+[:：]\s*)?([^\n\r]+)[\r\n]+([\s\S]*?)(?=(?:##\s+|$))/g
+  let match
+  while ((match = regex.exec(article.content)) !== null) {
+    const q = match[1].trim()
+    const a = match[2].replace(/[*_#`]/g, '').trim()
+    if (q && a) {
+      faqItems.push({ question: q, answer: a.slice(0, 300) })
+    }
+  }
+}
+---
+
+<BaseLayout
+  title={`${article.title} - 梯子避坑社`}
+  description={article.description}
+  ogType="article"
+  articleMeta={{
+    publishedTime: article.lastUpdated,
+    modifiedTime: article.lastUpdated,
+    tags: article.tags,
+    author: '梯子避坑社技术专家组'
+  }}
+  faqItems={faqItems.length > 0 ? faqItems : undefined}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {/* Breadcrumbs */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-8 overflow-x-auto pb-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors flex-shrink-0">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="flex-shrink-0">知识库</span>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="font-medium text-zinc-700 dark:text-zinc-300 flex-shrink-0">【{currentCategoryCol?.title || article.category}】</span>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium truncate" aria-current="page">{article.title}</span>
+    </nav>
+
+    <div class="flex gap-10">
+      {/* Left Category Multi-level Sidebar (Desktop) */}
+      <aside class="w-64 flex-shrink-0 hidden lg:block">
+        <div class="sticky top-24">
+          <DocSidebar
+            client:load
+            currentPath={currentPath}
+            headings={headings}
+          />
+        </div>
+      </aside>
+
+      {/* Center Main Article Content (Pure Pre-rendered Static HTML) */}
+      <main class="flex-1 min-w-0 max-w-4xl">
+        {/* Article Header Metadata */}
+        <div class="mb-6 pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80">
+          <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full font-medium bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+              {article.category}
+            </span>
+            <span class="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5" />
+              更新于 {article.lastUpdated}
+            </span>
+            <span class="flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5" />
+              预计阅读 {article.readingTime}
+            </span>
+          </div>
+
+          {/* Tags list */}
+          {article.tags && article.tags.length > 0 && (
+            <div class="flex flex-wrap items-center gap-2 mt-3">
+              {article.tags.map(tag => (
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400">
+                  <Tag className="w-3 h-3 text-emerald-500" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Pre-rendered HTML Body */}
+        <article class="prose prose-zinc dark:prose-invert prose-emerald max-w-none text-zinc-800 dark:text-zinc-200 leading-relaxed" set:html={html} />
+
+        {/* Topic Cluster Cross-Linking Network Section */}
+        {relatedClusters.length > 0 && (
+          <div class="my-10 p-6 rounded-2xl bg-zinc-100/60 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <Network className="w-4 h-4 text-emerald-500" />
+                <h3 class="font-bold text-sm text-zinc-900 dark:text-zinc-100 tracking-tight">
+                  🔗 知识集群与交叉内链推荐 (Topic Cluster Network)
+                </h3>
+              </div>
+              <span class="text-[11px] text-zinc-400">权重拓扑与深度延展</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {relatedClusters.map((rule) => (
+                <a
+                  href={rule.href}
+                  class="p-3.5 rounded-xl bg-white dark:bg-zinc-950/80 border border-zinc-200/80 dark:border-zinc-800/80 hover:border-emerald-500/50 hover:shadow-md transition-all group flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex items-center justify-between mb-1.5">
+                      <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+                        【{rule.category}】
+                      </span>
+                      <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all" />
+                    </div>
+                    <h4 class="text-xs font-bold text-zinc-800 dark:text-zinc-200 group-hover:text-emerald-500 transition-colors line-clamp-1">
+                      {rule.title}
+                    </h4>
+                  </div>
+                  {rule.relationNote && (
+                    <p class="text-[11px] text-zinc-400 dark:text-zinc-500 mt-1 line-clamp-1">
+                      {rule.relationNote}
+                    </p>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Bottom Actions & Adjacent Articles */}
+        <div class="mt-8 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+          <div class="flex items-center justify-between pb-6 mb-6 border-b border-zinc-100 dark:border-zinc-800/60">
+            <span class="text-xs text-zinc-400">
+              纯静态 SSG 输出 · 毫秒级抓取 · 欢迎技术交流
+            </span>
+            <button
+              onclick="navigator.clipboard.writeText(window.location.href);alert('已复制文章链接！')"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs text-zinc-600 dark:text-zinc-300 transition-colors cursor-pointer"
+            >
+              <Share2 className="w-3.5 h-3.5 text-emerald-500" />
+              分享本文
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prevArticle ? (
+              <a
+                href={prevArticle.href}
+                class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all group"
+              >
+                <div class="flex items-center gap-1.5 text-xs text-zinc-400 mb-1">
+                  <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                  <span>上一篇</span>
+                </div>
+                <div class="font-semibold text-sm text-zinc-800 dark:text-zinc-200 group-hover:text-emerald-500 transition-colors truncate">
+                  {prevArticle.title}
+                </div>
+              </a>
+            ) : <div />}
+
+            {nextArticle ? (
+              <a
+                href={nextArticle.href}
+                class="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all text-right group ml-auto w-full"
+              >
+                <div class="flex items-center justify-end gap-1.5 text-xs text-zinc-400 mb-1">
+                  <span>下一篇</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <div class="font-semibold text-sm text-zinc-800 dark:text-zinc-200 group-hover:text-emerald-500 transition-colors truncate">
+                  {nextArticle.title}
+                </div>
+              </a>
+            ) : <div />}
+          </div>
+        </div>
+      </main>
+
+      {/* Right Table of Contents (TOC) */}
+      {headings.length > 0 && (
+        <div class="w-64 flex-shrink-0 hidden xl:block">
+          <div class="sticky top-24 pl-6 border-l border-zinc-200 dark:border-zinc-800 text-sm">
+            <div class="mb-4">
+              <div class="flex items-center justify-between text-xs text-zinc-400 mb-1">
+                <span class="flex items-center gap-1.5 font-medium text-zinc-700 dark:text-zinc-300">
+                  <AlignLeft className="w-3.5 h-3.5 text-emerald-500" />
+                  本文目录
+                </span>
+                <span id="toc-progress-text" class="font-mono text-[11px]">0%</span>
+              </div>
+              <div class="h-1 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+                <div id="toc-progress-bar" class="h-full bg-emerald-500 rounded-full transition-all duration-150" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <nav class="space-y-1 max-h-[calc(100vh-220px)] overflow-y-auto pr-2 custom-scrollbar">
+              {headings.map((item) => (
+                <a
+                  href={`#${item.id}`}
+                  class={`toc-link group block py-1 text-xs transition-colors truncate ${
+                    item.level === 3 ? 'pl-4' : 'pl-0'
+                  } text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200`}
+                  data-heading-id={item.id}
+                >
+                  {item.text}
+                </a>
+              ))}
+            </nav>
+
+            <div class="mt-6 pt-4 border-t border-zinc-200/60 dark:border-zinc-800/60">
+              <button
+                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                class="flex items-center gap-2 text-xs text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400 transition-colors cursor-pointer"
+              >
+                <ArrowUp className="w-3.5 h-3.5" />
+                回到顶部
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* Mobile Floating Drawer for Multi-level Nav & TOC */}
+  <MobileDocDrawer client:load currentPath={currentPath} headings={headings} />
+
+  {/* Client scrollspy script */}
+  <script is:inline>
+    function setupScrollspy() {
+      const links = document.querySelectorAll('.toc-link');
+      const progressBar = document.getElementById('toc-progress-bar');
+      const progressText = document.getElementById('toc-progress-text');
+      if (!links.length) return;
+
+      window.addEventListener('scroll', () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        if (total > 0 && progressBar && progressText) {
+          const pct = Math.min(100, Math.max(0, Math.round((window.scrollY / total) * 100)));
+          progressBar.style.width = pct + '%';
+          progressText.innerText = pct + '%';
+        }
+
+        const scrollPos = window.scrollY + 120;
+        let currentId = '';
+        links.forEach(link => {
+          const id = link.getAttribute('data-heading-id');
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollPos) {
+            currentId = id;
+          }
+        });
+
+        links.forEach(link => {
+          if (link.getAttribute('data-heading-id') === currentId) {
+            link.classList.add('font-semibold', 'text-emerald-600', 'dark:text-emerald-400');
+            link.classList.remove('text-zinc-500', 'dark:text-zinc-400');
+          } else {
+            link.classList.remove('font-semibold', 'text-emerald-600', 'dark:text-emerald-400');
+            link.classList.add('text-zinc-500', 'dark:text-zinc-400');
+          }
+        });
+      }, { passive: true });
+    }
+    setupScrollspy();
+  </script>
+</BaseLayout>

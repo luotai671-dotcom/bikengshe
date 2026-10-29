@@ -1,0 +1,289 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { KNOWLEDGE_BASE_COLUMNS } from '../data/navigation'
+import DecisionGuideCards from '../components/guide/DecisionGuideCards.astro'
+import {
+  Compass,
+  ArrowRight,
+  Laptop,
+  Lightbulb,
+  Server,
+  BookOpen,
+  Search,
+  Zap,
+  Wrench,
+  Sparkles
+} from 'lucide-react'
+
+const iconMap: Record<string, any> = {
+  Laptop,
+  Lightbulb,
+  Server,
+  BookOpen,
+}
+---
+
+<BaseLayout
+  title="2026 新手科学出海避坑宝典：从 0 到 1 告别跑路盘，8 大选型法则与良心月付榜 - 梯子避坑社"
+  description="拒绝年付被割 · 专测晚高峰丢包 · 极客网络排障库。保持中立测评，坚守资金安全。提供机场跑路防雷指南、晚高峰真实丢包压测、全平台客户端配置与网络底层故障秒级排障手册。"
+  ogType="website"
+  canonicalURL="https://tizibks.com/"
+  robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+>
+  <div class="flex flex-col min-h-screen">
+    {/* Hero Section */}
+    <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-zinc-200/80 dark:border-zinc-800/80 bg-grid-pattern">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Badge */}
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 mb-6 shadow-sm">
+          <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>EscapeTrap 保持中立测评 · 拒绝年付被割 · 专测晚高峰丢包</span>
+        </div>
+
+        {/* Main Title */}
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-6 leading-[1.15]">
+          拒绝年付被割 · 专测晚高峰丢包
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-400 mt-1">
+            极客网络排障库 · 梯子避坑社
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+          保持中立测评，坚守资金安全。深测晚高峰真实丢包率、破解低价年付跑路套路、精编全平台客户端与网络分流故障急救手册。
+        </p>
+
+        {/* Search Trigger Bar */}
+        <div class="max-w-xl mx-auto mb-8">
+          <button
+            type="button"
+            id="home-search-trigger"
+            onclick="window.dispatchEvent(new CustomEvent('open-search-modal')); document.getElementById('global-search-trigger')?.click();"
+            class="w-full flex items-center justify-between px-5 py-3.5 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 shadow-lg shadow-zinc-200/40 dark:shadow-none text-zinc-400 text-sm transition-all group cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+            aria-label="搜索文档与教程"
+          >
+            <div class="flex items-center gap-3">
+              <Search className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" />
+              <span class="text-zinc-500 dark:text-zinc-400">搜索 29 篇全景技术指南、客户端配置...</span>
+            </div>
+            <kbd class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-500">
+              ⌘K
+            </kbd>
+          </button>
+        </div>
+
+        {/* CTA Buttons */}
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="/getting-started"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm shadow-lg shadow-emerald-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <Zap className="w-4 h-4" />
+            <span>新手 5 分钟上手</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+
+          <a
+            href="/kb/vps/cn2-9929-cmi-diff"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-sm border border-emerald-500/40 transition-all hover:scale-[1.02]"
+          >
+            <Sparkles className="w-4 h-4 text-emerald-500" />
+            <span>🔥 2026 线路对比指南</span>
+          </a>
+
+          <a
+            href="/kb/clients/clash-verge-windows"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium text-sm border border-zinc-200 dark:border-zinc-800 transition-all hover:scale-[1.02]"
+          >
+            <Laptop className="w-4 h-4 text-emerald-500" />
+            <span>Clash Verge 教程</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* 3 阶段场景化决策分流卡片（包含选购避坑、多端配置、排障指引） */}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-10 mb-4 relative z-10">
+      <DecisionGuideCards
+        headingText="新手配置核心流：3 阶段场景化决策分流"
+        subHeadingText="根据你当前所处阶段或遇到的网络痛点，点击直接进入对应专属实战指引与避坑指南："
+        showStepBadge={true}
+        stepBadgeText="ROUTER"
+        headingId="home-decision-router-heading"
+        isHero={true}
+      />
+    </div>
+
+    {/* 4 Core Pillars Grid */}
+    <section class="py-12 md:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white mb-3">
+          知识库体系：4 大模块严格划分
+        </h2>
+        <p class="text-sm text-zinc-500 dark:text-zinc-400">
+          顶部导航栏随时悬停呼出完整 4 列 Mega Menu，纯静态 HTML 极速直达任意知识点
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {KNOWLEDGE_BASE_COLUMNS.map((column) => {
+          const IconComponent = iconMap[column.iconName] || BookOpen
+
+          return (
+            <div class="group relative flex flex-col p-6 rounded-2xl bg-white dark:bg-zinc-900/70 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300">
+              <div class="flex items-center justify-between mb-4">
+                <div class="p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800 group-hover:scale-110 transition-transform">
+                  <IconComponent className="w-6 h-6 text-emerald-500" />
+                </div>
+                <span class="text-xs font-mono font-medium px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                  {column.badgeText}
+                </span>
+              </div>
+
+              <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-2 tracking-tight">
+                【{column.title}】
+              </h3>
+              <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-6 leading-relaxed">
+                {column.description}
+              </p>
+
+              {/* Top 4 Links */}
+              <div class="space-y-2 mt-auto pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+                {column.items.slice(0, 4).map((item) => (
+                  <a
+                    href={item.href}
+                    class="flex items-center justify-between text-xs text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-1 group/link"
+                  >
+                    <span class="truncate">{item.title}</span>
+                    <ArrowRight className="w-3 h-3 text-zinc-400 opacity-0 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all" />
+                  </a>
+                ))}
+              </div>
+
+              <a
+                href={column.items[0].href}
+                class="mt-4 pt-3 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+              >
+                <span>查看该分类全部 ({column.items.length})</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+
+    {/* Featured Articles & Guides Grid */}
+    <section class="py-12 bg-zinc-100/50 dark:bg-zinc-900/30 border-y border-zinc-200/80 dark:border-zinc-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white tracking-tight">
+              重点必读推荐
+            </h2>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+              解决 80% 新手困惑的硬核实操与原理解析
+            </p>
+          </div>
+          <a
+            href="/guide/faq/"
+            class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
+          >
+            更多常见问答 FAQ <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1: 2026 线路科普与对比 (Flagship) */}
+          <a
+            href="/kb/vps/cn2-9929-cmi-diff"
+            class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-emerald-500/50 hover:border-emerald-500 transition-all group shadow-sm relative"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                🔥 2026 深度指南
+              </span>
+              <span class="text-xs text-zinc-400 font-mono">12 分钟</span>
+            </div>
+            <h3 class="font-bold text-base text-zinc-900 dark:text-white group-hover:text-emerald-500 transition-colors mb-2">
+              CN2 GIA、9929、CMI 区别与选购全景指南
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+              电信、联通、移动三大跨国骨干回程拓扑深度实测，附防奸商真假 GIA 鉴别命令与分流配置。
+            </p>
+            <div class="flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 gap-1">
+              开始阅读 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+
+          {/* Card 2: Verge Windows */}
+          <a
+            href="/kb/clients/clash-verge-windows"
+            class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 transition-all group shadow-sm"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                客户端首选
+              </span>
+              <span class="text-xs text-zinc-400 font-mono">8 分钟</span>
+            </div>
+            <h3 class="font-bold text-base text-zinc-900 dark:text-white group-hover:text-emerald-500 transition-colors mb-2">
+              Clash Verge Rev (Windows) 配置全解
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+              新一代跨平台客户端从下载、订阅导入到开启 TUN 模式虚拟网卡全面接管网络。
+            </p>
+            <div class="flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 gap-1">
+              开始阅读 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+
+          {/* Card 3: VLESS Reality */}
+          <a
+            href="/kb/vps/vless-reality"
+            class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/50 transition-all group shadow-sm"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
+                自建抗封
+              </span>
+              <span class="text-xs text-zinc-400 font-mono">10 分钟</span>
+            </div>
+            <h3 class="font-bold text-base text-zinc-900 dark:text-white group-hover:text-emerald-500 transition-colors mb-2">
+              VLESS Reality 搭建与反探测配置
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+              无需自备域名与申请 SSL 证书，借用真实大厂证书实现免疫主动探测的节点搭建。
+            </p>
+            <div class="flex items-center text-xs font-medium text-emerald-600 dark:text-emerald-400 gap-1">
+              开始阅读 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    function setupHomeSearch() {
+      var btn = document.getElementById('home-search-trigger');
+      if (!btn) return;
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-search-modal'));
+        var headerBtn = document.getElementById('global-search-trigger');
+        if (headerBtn) {
+          headerBtn.click();
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupHomeSearch);
+    } else {
+      setupHomeSearch();
+    }
+    document.addEventListener('astro:page-load', setupHomeSearch);
+  </script>
+</BaseLayout>

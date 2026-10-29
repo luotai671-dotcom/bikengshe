@@ -1,0 +1,159 @@
+---
+import { HeaderIsland } from '../components/layout/HeaderIsland'
+import Footer from '../components/layout/Footer.astro'
+import { Compass, ShieldCheck, Heart } from 'lucide-react'
+
+export interface Props {
+  title: string
+  description: string
+  canonicalURL?: string
+  ogType?: 'website' | 'article'
+  robots?: string
+  articleMeta?: {
+    publishedTime?: string
+    modifiedTime?: string
+    tags?: string[]
+    author?: string
+  }
+  faqItems?: Array<{
+    question: string
+    answer: string
+  }>
+}
+
+const {
+  title,
+  description,
+  canonicalURL = Astro.url.href,
+  ogType = 'website',
+  robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  articleMeta,
+  faqItems
+} = Astro.props
+
+const DEFAULT_SITE_TITLE = '2026 新手科学出海避坑宝典：从 0 到 1 告别跑路盘，8 大选型法则与良心月付榜 - 梯子避坑社'
+const siteTitle = title ? (title.includes('梯子避坑社') ? title : `${title} - 梯子避坑社`) : DEFAULT_SITE_TITLE
+const siteUrl = 'https://tizibks.com'
+const ogImage = `${siteUrl}/og-preview.png`
+
+// Construct Schema.org JSON-LD
+const schemaList = []
+
+// 1. WebSite Schema
+schemaList.push({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': '梯子避坑社',
+  'url': siteUrl,
+  'description': '拒绝年付被割 · 专测晚高峰丢包 · 极客网络排障库。保持中立测评，坚守资金安全。',
+  'potentialAction': {
+    '@type': 'SearchAction',
+    'target': `${siteUrl}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string'
+  }
+})
+
+// 2. Article Schema
+if (ogType === 'article' && articleMeta) {
+  schemaList.push({
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    'headline': title,
+    'description': description,
+    'datePublished': articleMeta.publishedTime || '2026-10-20',
+    'dateModified': articleMeta.modifiedTime || articleMeta.publishedTime || '2026-10-26',
+    'author': {
+      '@type': 'Person',
+      'name': articleMeta.author || '梯子避坑社技术专家组',
+      'url': siteUrl
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': '梯子避坑社 (EscapeTrap)',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': `${siteUrl}/favicon.svg`
+      }
+    },
+    'keywords': articleMeta.tags?.join(', ') || '科学上网, 客户端教程, 线路科普'
+  })
+}
+
+// 3. FAQPage Schema (for rich snippet question/answers in search engines)
+if (faqItems && faqItems.length > 0) {
+  schemaList.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqItems.map(item => ({
+      '@type': 'Question',
+      'name': item.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': item.answer
+      }
+    }))
+  })
+}
+---
+
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'/></svg>" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content={robots} />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="robots" href="/robots.txt" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="梯子避坑社 (EscapeTrap)" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    {schemaList.map(schema => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    <style is:global>
+      @import '../index.css';
+    </style>
+  </head>
+  <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 antialiased selection:bg-emerald-500/20 selection:text-emerald-700 dark:selection:text-emerald-300 min-h-screen flex flex-col">
+    <!-- Interactive Header Island (MegaMenu, Search, Theme) -->
+    <HeaderIsland client:load currentPath={Astro.url.pathname} />
+
+    <!-- Pure Static HTML Content Slot -->
+    <div class="flex-1">
+      <slot />
+    </div>
+
+    <!-- Comprehensive E-E-A-T 4-Column Footer -->
+    <Footer />
+  </body>
+</html>

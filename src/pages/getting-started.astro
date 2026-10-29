@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getArticleData } from '../utils/articleLoader'
+import { parseMarkdown } from '../utils/markdown'
+import DecisionGuideCards from '../components/guide/DecisionGuideCards.astro'
+import ThreeStepExecutionFlow from '../components/guide/ThreeStepExecutionFlow.astro'
+import FirstSuccessMilestone from '../components/guide/FirstSuccessMilestone.astro'
+import ClientRecommendationMatrix from '../components/guide/ClientRecommendationMatrix.astro'
+import GuideNextStepsCluster, { guideFaqItems } from '../components/guide/GuideNextStepsCluster.astro'
+import { DocSidebar } from '../components/doc/DocSidebar'
+import { MobileDocDrawer } from '../components/doc/MobileDocDrawer'
+import { Calendar, Clock, Tag, Share2, AlignLeft, ArrowUp } from 'lucide-react'
+
+const currentPath = '/getting-started'
+const article = getArticleData(currentPath)
+
+// Split content around STEP_FLOW_INSERTION so ThreeStepExecutionFlow sits directly below Section 02
+const [part1Raw] = article.content.split('<!-- STEP_FLOW_INSERTION -->')
+const { html: part1Html, headings: part1Headings } = parseMarkdown(part1Raw, currentPath)
+
+// Seamless unified TOC for the right sidebar
+const allHeadings = [
+  { id: 'guide-decision-heading', text: '01 快速定位你的配置进度', level: 2 },
+  ...part1Headings,
+  { id: '03-标准上手三步操作流', text: '03 标准上手三步操作流（实战落地与安全指南）', level: 2 },
+  { id: '第一步-拿到可用订阅', text: '第一步：拿到可用订阅', level: 3 },
+  { id: '第二步-按设备装客户端', text: '第二步：按设备装客户端', level: 3 },
+  { id: '第三步-导入并验证', text: '第三步：导入配置并验证连通性', level: 3 },
+  { id: '04-第一次成功要满足什么', text: '04 第一次成功要满足什么（验收基线与分层排查）', level: 2 },
+  { id: '05-平台主流客户端推荐与对比', text: '05 平台主流客户端推荐表与专属配置入口', level: 2 },
+  { id: 'stuck-heading', text: '06 卡住时（排障引导与高频疑问解答）', level: 2 },
+  { id: 'route-heading', text: '07 路径条（全景导航与下一步去向）', level: 2 },
+  { id: 'reads-heading', text: '08 推荐阅读（核心知识库专题拓展）', level: 2 }
+]
+---
+
+<BaseLayout
+  title={`${article.title} - 梯子避坑社`}
+  description={article.description}
+  ogType="article"
+  faqItems={guideFaqItems}
+  articleMeta={{
+    publishedTime: article.lastUpdated,
+    modifiedTime: article.lastUpdated,
+    tags: article.tags,
+    author: '梯子避坑社技术专家组'
+  }}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex gap-10">
+      {/* Left Category Multi-level Sidebar (Desktop) */}
+      <aside class="w-64 flex-shrink-0 hidden lg:block">
+        <div class="sticky top-24">
+          <DocSidebar
+            client:load
+            currentPath={currentPath}
+            headings={allHeadings}
+          />
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0 max-w-4xl">
+        {/* Header Metadata */}
+        <div class="mb-6 pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80">
+          <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full font-medium bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+              {article.category}
+            </span>
+            <span class="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5" />
+              更新于 {article.lastUpdated}
+            </span>
+            <span class="flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5" />
+              预计阅读 {article.readingTime}
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 mt-3">
+            {article.tags.map(tag => (
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400">
+                <Tag className="w-3 h-3 text-emerald-500" />
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* 01 场景化决策分流卡片（置于新手入门核心位置） */}
+        <DecisionGuideCards />
+
+        {/* Part 1: 新手入门概念与 02 先分清五样东西（图2：核心概念与避坑清单） */}
+        <article class="prose prose-zinc dark:prose-invert prose-emerald max-w-none text-zinc-800 dark:text-zinc-200 leading-relaxed" set:html={part1Html} />
+
+        {/* 03 标准上手三步操作流（实战落地与安全指南） */}
+        <ThreeStepExecutionFlow />
+
+        {/* 04 第一次成功要满足什么（根据图1优化：验收基线与分层排查，正对图2箭头位置） */}
+        <FirstSuccessMilestone />
+
+        {/* 05 平台主流客户端推荐表与专属配置入口（全端对比矩阵） */}
+        <ClientRecommendationMatrix />
+
+        {/* 06 卡住时 + 07 路径条 + 08 推荐阅读（基于图1、图2、图3最高规格加载） */}
+        <GuideNextStepsCluster stuckBadge="06" routeBadge="07" readsBadge="08" currentPath={currentPath} />
+      </main>
+
+      {/* Right Table of Contents (TOC) */}
+      {allHeadings.length > 0 && (
+        <div class="w-64 flex-shrink-0 hidden xl:block">
+          <div class="sticky top-24 pl-6 border-l border-zinc-200 dark:border-zinc-800 text-sm">
+            <span class="flex items-center gap-1.5 font-medium text-zinc-700 dark:text-zinc-300 mb-4">
+              <AlignLeft className="w-3.5 h-3.5 text-emerald-500" />
+              本文目录
+            </span>
+            <nav class="space-y-1 max-h-[calc(100vh-220px)] overflow-y-auto pr-2 custom-scrollbar">
+              {allHeadings.map((item) => (
+                <a
+                  href={`#${item.id}`}
+                  class={`block py-1 text-xs transition-colors truncate ${
+                    item.level === 3 ? 'pl-4' : 'pl-0'
+                  } text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200`}
+                >
+                  {item.text}
+                </a>
+              ))}
+            </nav>
+
+            <div class="mt-6 pt-4 border-t border-zinc-200/60 dark:border-zinc-800/60">
+              <button
+                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                class="flex items-center gap-2 text-xs text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400 transition-colors cursor-pointer"
+              >
+                <ArrowUp className="w-3.5 h-3.5" />
+                回到顶部
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* Mobile Floating Drawer for Multi-level Nav & TOC */}
+  <MobileDocDrawer client:load currentPath={currentPath} headings={allHeadings} />
+</BaseLayout>

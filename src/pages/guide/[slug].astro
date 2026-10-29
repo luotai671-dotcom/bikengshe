@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getArticleData } from '../../utils/articleLoader'
+import { parseMarkdown, getRelatedTopicCluster } from '../../utils/markdown'
+import GuideNextStepsCluster, { guideFaqItems } from '../../components/guide/GuideNextStepsCluster.astro'
+import { DocSidebar } from '../../components/doc/DocSidebar'
+import { MobileDocDrawer } from '../../components/doc/MobileDocDrawer'
+import {
+  ChevronRight,
+  Clock,
+  Calendar,
+  Tag,
+  Share2,
+  AlignLeft,
+  ArrowUp,
+  Layers,
+  ArrowRight
+} from 'lucide-react'
+
+export async function getStaticPaths() {
+  const guideSlugs = [
+    'quick-start',
+    'clients',
+    'solution-picker',
+    'avoid-scams',
+    'troubleshooting',
+    'glossary',
+    'security-privacy',
+    'line-analysis'
+  ]
+  return guideSlugs.map((slug) => ({
+    params: { slug }
+  }))
+}
+
+const { slug } = Astro.params
+const currentPath = `/guide/${slug}`
+const article = getArticleData(currentPath)
+const { html, headings } = parseMarkdown(article.content, currentPath)
+const relatedClusters = getRelatedTopicCluster(currentPath, 'guide')
+
+// Extract structured FAQ items if present in article content
+let faqItems: Array<{ question: string; answer: string }> = []
+const regex = /##\s+(?:Q\d+[:：]\s*)?([^\n\r]+)[\r\n]+([\s\S]*?)(?=(?:##\s+|$))/g
+let match
+while ((match = regex.exec(article.content)) !== null) {
+  const q = match[1].trim()
+  const a = match[2].replace(/[*_#`]/g, '').trim()
+  if (q && a && (q.includes('？') || q.includes('?'))) {
+    faqItems.push({ question: q, answer: a.slice(0, 300) })
+  }
+}
+if (faqItems.length === 0) {
+  faqItems = guideFaqItems
+}
+---
+
+<BaseLayout
+  title={`${article.title} - 梯子避坑社`}
+  description={article.description}
+  ogType="article"
+  faqItems={faqItems}
+  articleMeta={{
+    publishedTime: article.lastUpdated,
+    modifiedTime: article.lastUpdated,
+    tags: article.tags,
+    author: '梯子避坑社技术专家组'
+  }}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {/* Breadcrumbs */}
+    <nav class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400 mb-8 overflow-x-auto pb-1" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-emerald-500 transition-colors flex-shrink-0">首页</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <a href="/getting-started" class="hover:text-emerald-500 transition-colors flex-shrink-0">指南专栏</a>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="font-medium text-zinc-700 dark:text-zinc-300 flex-shrink-0">【{article.category}】</span>
+      <ChevronRight className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
+      <span class="text-zinc-800 dark:text-zinc-200 font-medium truncate" aria-current="page">{article.title}</span>
+    </nav>
+
+    <div class="flex gap-10">
+      {/* Left Category Multi-level Sidebar (Desktop) */}
+      <aside class="w-64 flex-shrink-0 hidden lg:block">
+        <div class="sticky top-24">
+          <DocSidebar
+            client:load
+            currentPath={currentPath}
+            headings={headings}
+          />
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main class="flex-1 min-w-0 max-w-4xl">
+        {/* Header Metadata */}
+        <div class="mb-6 pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80">
+          <div class="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full font-medium bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+              {article.category}
+            </span>
+            <span class="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5" />
+              更新于 {article.lastUpdated}
+            </span>
+            <span class="flex items-center gap-1">
+              <Clock className="w-3.5 h-3.5" />
+              预计阅读 {article.readingTime}
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 mt-3">
+            {article.tags.map((tag) => (
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400">
+                <Tag className="w-3 h-3 text-emerald-500" />
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Prose Markdown Article Content */}
+        <article
+          class="prose prose-zinc dark:prose-invert prose-emerald max-w-none text-zinc-800 dark:text-zinc-200 leading-relaxed"
+          set:html={html}
+        />
+
+        {/* Next Steps Cluster: 卡住时 + 路径条 + 推荐阅读 */}
+        <GuideNextStepsCluster
+          className="mt-14"
+          currentPath={currentPath}
+          stuckBadge="06"
+          routeBadge="07"
+          readsBadge="08"
+        />
+      </main>
+
+      {/* Right Table of Contents (TOC) */}
+      {headings.length > 0 && (
+        <aside class="w-64 flex-shrink-0 hidden xl:block">
+          <div class="sticky top-24 pl-6 border-l border-zinc-200 dark:border-zinc-800 text-sm">
+            <span class="flex items-center gap-1.5 font-medium text-zinc-700 dark:text-zinc-300 mb-4">
+              <AlignLeft className="w-3.5 h-3.5 text-emerald-500" />
+              本文目录
+            </span>
+            <nav class="space-y-1 max-h-[calc(100vh-220px)] overflow-y-auto pr-2 custom-scrollbar">
+              {headings.map((item) => (
+                <a
+                  href={`#${item.id}`}
+                  class={`block py-1 text-xs transition-colors truncate ${
+                    item.level === 3 ? 'pl-4' : 'pl-0'
+                  } text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200`}
+                >
+                  {item.text}
+                </a>
+              ))}
+              <a
+                href="#stuck-heading"
+                class="block py-1 text-xs transition-colors truncate pl-0 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                06 卡住时（排障引导）
+              </a>
+              <a
+                href="#route-heading"
+                class="block py-1 text-xs transition-colors truncate pl-0 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                07 路径条（全景导航）
+              </a>
+              <a
+                href="#reads-heading"
+                class="block py-1 text-xs transition-colors truncate pl-0 text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                08 推荐阅读（知识库矩阵）
+              </a>
+            </nav>
+
+            <div class="mt-6 pt-4 border-t border-zinc-200/60 dark:border-zinc-800/60">
+              <button
+                onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+                class="flex items-center gap-2 text-xs text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400 transition-colors cursor-pointer"
+              >
+                <ArrowUp className="w-3.5 h-3.5" />
+                回到顶部
+              </button>
+            </div>
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
+
+  {/* Mobile Floating Drawer for Multi-level Nav & TOC */}
+  <MobileDocDrawer client:load currentPath={currentPath} headings={headings} />
+</BaseLayout>
