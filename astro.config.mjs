@@ -21,7 +21,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     {
-      name: 'sync-sitemap-xml',
+      name: 'sync-sitemap-and-indexnow',
       hooks: {
         'astro:build:done': async ({ dir }) => {
           const fs = await import('node:fs/promises')
@@ -31,6 +31,13 @@ export default defineConfig({
             await fs.copyFile(sitemapIndexPath, sitemapXmlPath)
           } catch (e) {
             console.error('[sync-sitemap-xml] Error syncing sitemap:', e)
+          }
+
+          try {
+            const { submitIndexNow } = await import('./scripts/indexnow.mjs')
+            await submitIndexNow()
+          } catch (e) {
+            console.warn('[IndexNow] Auto-submission hook warning:', e.message)
           }
         },
       },

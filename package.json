@@ -6,6 +6,7 @@
     "dev": "astro dev --host 0.0.0.0 --port 5173",
     "start": "astro dev --host 0.0.0.0 --port 5173",
     "build": "astro build",
+    "indexnow": "node scripts/indexnow.mjs",
     "preview": "astro preview --host 0.0.0.0 --port 5173"
   },
   "dependencies": {

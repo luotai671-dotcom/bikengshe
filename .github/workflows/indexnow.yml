@@ -1,0 +1,35 @@
+name: Build & Submit IndexNow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build-and-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site & Auto submit to IndexNow
+        run: npm run build
+
+      - name: Verify Verification Key in Build Artifacts
+        run: |
+          test -f dist/d5d201531070f93c4de5ccc3e6d19251.txt || exit 1
+          echo "IndexNow verification file successfully verified in dist/!"
