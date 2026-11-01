@@ -9,6 +9,27 @@ const cat5 = require('./gen_cat5.cjs');
 
 const allArticles = [...cat1, ...cat2, ...cat3, ...cat4, ...cat5];
 
+allArticles.push({
+  slug: 'qos-congestion-control-deep-dive',
+  categorySlug: 'protocols',
+  category: '协议与加密底层解析',
+  title: '从 TCP BBRv3 到 Hysteria2：晚高峰骨干网 QoS 暴力整形下的抗丢包协议实战演进',
+  description: '深入剖析晚高峰骨干网 QoS 令牌桶拥塞整形机制，拆解从 Cubic 窗口折半、BBRv3 探测模型重构到 Hysteria2 单边 UDP 暴力发包的底层抗丢包协议演进与内核调优指南。',
+  tags: ['网络协议', 'BBRv3', 'Hysteria2', 'QoS整形', '拥塞控制', '丢包调优'],
+  directAnswer: '晚高峰跨国拥塞并非物理带宽耗尽，而是骨干网对民用大流量实施层次化令牌桶（HTB）QoS 整形导致动态丢包。传统 Cubic 将丢包误判为信道拥塞致窗口瞬间折半；BBRv3 依托物理交付速率与 RTT 双模型重构状态机，可抗 15% 随机丢包且规避了排队延迟膨胀；在 20%~30% 恶劣丢包下，基于 UDP 的单边自适应加速协议 Hysteria2 摒弃退避机制，凭借主动速率推算成为跨国突围最优解。'
+});
+
+allArticles.push({
+  slug: 'cross-border-browser-ip-isolation',
+  categorySlug: 'unblocking',
+  category: '大模型与流媒体风控',
+  title: '出海外贸与跨境多账号防关联：从指纹浏览器环境伪装到底层静态住宅 IP 隔离实战',
+  description: '深入解构跨境电商与出海外贸多店铺防关联风控体系，详解 Canvas/WebGL/WebRTC 浏览器指纹伪装、静态独享双 ISP 住宅 IP 纯净度鉴别与生产级网络隔离分流实战。',
+  tags: ['跨境出海', '外贸办公', '防关联', '指纹浏览器', '住宅IP', 'WebRTC泄露'],
+  directAnswer: '跨境平台（Amazon/eBay/TikTok Shop）与金融网关（Stripe/PayPal）防关联风控，是“设备指纹沙箱”与“网络出口画像”的双重交叉比对。单纯修改 User-Agent 无法阻断 Canvas/WebGL 渲染哈希与 WebRTC 真实外网 IP 泄漏；机房托管 IP（Hosting）或共享动态代理更会直接触发二次风控。商用级防关联标准必须实行“独立指纹容器 + 静态独享双 ISP 原生住宅 IP（Residential）+ 规则组严格端口分流”的三维立体隔离，彻底根除跨账号关联风控。'
+});
+
+
 const categoriesMeta = [
   {
     id: 'protocols',
