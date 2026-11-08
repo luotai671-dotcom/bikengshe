@@ -28,7 +28,7 @@ const ICON_COMPONENTS = {
 ---
 
 <BaseLayout
-  title="极客百科与常见高频 FAQ 矩阵 - 50 篇深度原理解析与避坑手册 - 梯子避坑社"
+  title="极客百科与常见高频 FAQ 矩阵 - 53 篇深度原理解析与避坑手册 - 梯子避坑社"
   description="梯子避坑社官方出品：全景覆盖底层协议与加密解构（VLESS/Reality/Hy2）、物理专线拓扑（IPLC/IEPL/CN2）、AI与流媒体风控解锁、客户端内核调优（TUN/Fake-IP）及 55 道高频热搜问答手风琴矩阵知识库。"
   ogType="website"
 >
@@ -51,7 +51,7 @@ const ICON_COMPONENTS = {
           极客百科与常见高频 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">FAQ 矩阵</span>
         </h1>
         <p class="text-base sm:text-lg text-zinc-300 leading-relaxed mb-6">
-          拒绝黑话包装与营销套路。我们从网络七层协议栈（L3-L7）、物理海缆路由、大模型对抗风控到操作系统内核驱动，全面梳理 5 大垂直分类、50 篇生产级深度长文与 55 道高频热搜问答，为您提供经得起抓包验证的真实答案。
+          拒绝黑话包装与营销套路。我们从网络七层协议栈（L3-L7）、物理海缆路由、大模型对抗风控到操作系统内核驱动，全面梳理 5 大垂直分类、53 篇生产级深度长文与 55 道高频热搜问答，为您提供经得起抓包验证的真实答案。
         </p>
 
         {/* 快速直达按钮组 */}
@@ -66,14 +66,14 @@ const ICON_COMPONENTS = {
             href="#articles-matrix"
             class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 font-medium text-xs border border-zinc-700 transition-colors"
           >
-            <span>浏览 50 篇深度长文 ↓</span>
+            <span>浏览 53 篇深度长文 ↓</span>
           </a>
         </div>
 
         {/* 4 Stats Chips */}
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-zinc-800/80">
           <div>
-            <div class="text-2xl font-black text-emerald-400 font-mono">50 篇</div>
+            <div class="text-2xl font-black text-emerald-400 font-mono">53 篇</div>
             <div class="text-xs text-zinc-400 mt-0.5">垂直深度长文</div>
           </div>
           <div>
@@ -104,7 +104,7 @@ const ICON_COMPONENTS = {
             5 大核心技术分类快速导航
           </h2>
           <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-            点击直接进入对应分类专属索引，或向下浏览 50 篇全景矩阵
+            点击直接进入对应分类专属索引，或向下浏览 53 篇全景矩阵
           </p>
         </div>
       </div>
@@ -150,7 +150,7 @@ const ICON_COMPONENTS = {
       <WikiFaqAccordion client:load initialCategory="all" />
     </div>
 
-    {/* 5 Categories Sections (50 Articles Detailed Matrix) */}
+    {/* 5 Categories Sections (53 Articles Detailed Matrix) */}
     <div id="articles-matrix" class="space-y-16 scroll-mt-24">
       {WIKI_CATEGORIES.map((cat, catIdx) => {
         const catArticles = WIKI_ARTICLES_LIST.filter((a) => a.categorySlug === cat.id)
@@ -170,7 +170,7 @@ const ICON_COMPONENTS = {
                       分类 0{catIdx + 1}
                     </span>
                     <span class="text-[11px] px-2 py-0.2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-medium">
-                      共 10 篇精选
+                      共 {catArticles.length} 篇精选
                     </span>
                   </div>
                   <h2 class="text-xl sm:text-2xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">

@@ -50,7 +50,7 @@ const categoryArticles = WIKI_ARTICLES_LIST.filter((a) => a.categorySlug === cat
         【{currentCategory.name}】
       </h1>
       <p class="text-base text-zinc-600 dark:text-zinc-400 max-w-3xl leading-relaxed">
-        {currentCategory.description}。汇集 10 篇网络工程级深度长文，每一篇均配备清晰的 Direct Answer 与可复现的技术验证，杜绝一切黑话与营销误导。
+        {currentCategory.description}。汇集 {categoryArticles.length} 篇网络工程级深度长文，每一篇均配备清晰的 Direct Answer 与可复现的技术验证，杜绝一切黑话与营销误导。
       </p>
 
       {/* Category Nav Quick Pill Bar */}

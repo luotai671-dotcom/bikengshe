@@ -1,12 +1,12 @@
 ---
-title: "WireGuard 为什么无法直接跨境网络加速？UDP 特征封锁与混淆与网络边界穿透技巧"
+title: "WireGuard 为什么无法直接翻墙？UDP 特征封锁与混淆过墙技巧"
 description: "探究 WireGuard 作为下一代 Linux 内核级 VPN 在公网防火墙面前被秒封的技术机理，揭示其清晰的握手特征头与通过 AmneziaWG 混淆改造实现防封的技术路线。"
 date: "2026-10-29"
 category: "协议与加密底层解析"
 tags: ["WireGuard","AmneziaWG","UDP封锁","VPN混淆","内核网络"]
 ---
 
-# WireGuard 为什么无法直接跨境网络加速？UDP 特征封锁与混淆与网络边界穿透技巧
+# WireGuard 为什么无法直接翻墙？UDP 特征封锁与混淆过墙技巧
 
 ## Direct Answer（核心结论速览）
 

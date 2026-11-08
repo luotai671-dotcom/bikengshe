@@ -29,6 +29,36 @@ allArticles.push({
   directAnswer: '跨境平台（Amazon/eBay/TikTok Shop）与金融网关（Stripe/PayPal）防关联风控，是“设备指纹沙箱”与“网络出口画像”的双重交叉比对。单纯修改 User-Agent 无法阻断 Canvas/WebGL 渲染哈希与 WebRTC 真实外网 IP 泄漏；机房托管 IP（Hosting）或共享动态代理更会直接触发二次风控。商用级防关联标准必须实行“独立指纹容器 + 静态独享双 ISP 原生住宅 IP（Residential）+ 规则组严格端口分流”的三维立体隔离，彻底根除跨账号关联风控。'
 });
 
+allArticles.push({
+  slug: 'openwrt-istoreos-router-gateway-proxy',
+  categorySlug: 'clients',
+  category: '客户端分流与系统网络内核',
+  title: '软路由与旁路由全屋加速配置：OpenWrt 与 iStoreOS 节点分流避坑指南',
+  description: '详解软路由主路由与旁路由（透明网关）工作原理，深度评测 X86 与 ARM 架构硬件在 OpenWrt 与 iStoreOS 环境下运行 OpenClash、PassWall 的算力损耗与加密解密开销，提供国内流量绕过、DNS 环路劫持排除与全屋智能设备精准分流实战方案。',
+  tags: ['软路由机场推荐', 'OpenWrt', 'iStoreOS', '旁路由分流', '全屋科学上网', 'Tproxy网关'],
+  directAnswer: '软路由与旁路由透明网关是将网络层（L3）代理能力下沉至家庭中枢的核心方案。主路由模式具备最优转发跳数但单点崩溃风险高；旁路由模式容灾性最佳，但必须严格防范内网双向 NAT 损耗与 Dnsmasq 递归死锁。对于大吞吐场景，需确认硬件具备 AES-NI 指令集或针对 ARM 架构选配 ChaCha20 算法，并通过 Fake-IP 增强模式彻底消除国内流量被劫持的异常延迟。'
+});
+
+allArticles.push({
+  slug: 'gaming-steam-ps5-switch-nat-nodes',
+  categorySlug: 'routes',
+  category: '线路拓扑与机房链路',
+  title: 'Steam、PS5 与 Switch 联机游戏节点怎么选？NAT 类型优化与跨区低延迟避坑实测',
+  description: '深度评测 Steam、PlayStation 5 与任天堂 Switch 联机游戏网络加速节点选型。解构带宽、Ping 往返延迟、Jitter 抖动与微丢包对联机体验的影响，攻克 NAT 1 到 NAT 4 穿透障碍，解析 BGP 专线与直连线路在主机联机中的底层差异与防封避坑方案。',
+  tags: ['游戏机场推荐', '联机低延迟', 'PS5加速', 'Switch节点', 'NAT优化', 'FullCone'],
+  directAnswer: '多人竞技游戏的核心网络瓶颈在于 UDP 往返延迟（RTT）、抖动方差（Jitter < 5ms）与 NAT 穿透类型，而非盲目追求千兆带宽。对称型 NAT 节点会导致 P2P 会话打洞失败，引发 Switch 2618 报错与无法组队；商用电竞级选型必须依赖配备 Full Cone NAT 1/2 支持的 IPLC/IEPL 内网专线，并在路由器侧开启 DMZ 与 UDP 端口保持，彻底杜绝恶劣跨国丢包与模型瞬移。'
+});
+
+allArticles.push({
+  slug: 'cross-border-ecommerce-multi-account-ip-topology',
+  categorySlug: 'unblocking',
+  category: '大模型与流媒体风控',
+  title: '跨境电商多店铺与海外社媒运营：独立静态出口节点与防关联拓扑配置指南',
+  description: '面向亚马逊、TikTok Shop、Etsy、Shopee 及海外社媒运营团队的多店铺防关联网络架构指南。深度剖析平台风控数据库（MaxMind、IPinfo）、ASN 属性识别、原生静态独享住宅 IP 甄选与软硬件环境隔离拓扑实战，彻底避免账号连带封禁。',
+  tags: ['跨境电商网络', '多店铺防关联', '静态住宅IP', 'TikTok运营节点', '双ISP', '指纹浏览器'],
+  directAnswer: '跨境平台与海外社媒的多账号关联风控基于“指纹环境沙箱”与“网络出口特征”的双重图数据库比对。动态共享节点因 IP 频繁漂移与严重超售具有极高的连带封店风险；企业级防关联必须采用独享静态双 ISP 原生住宅 IP（Fraud Score < 5），并结合网关层静态 DHCP 绑定与策略路由，实现“一店铺、一指纹、一静态出口”的绝对物理隔离。'
+});
+
 
 const categoriesMeta = [
   {

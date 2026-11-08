@@ -332,13 +332,13 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onO
             )}
           </div>
 
-          {/* Main 5: 知识库 (4 列全集 / 50 篇极客百科) */}
+          {/* Main 5: 知识库 (4 列全集 / 53 篇极客百科) */}
           <div className="pt-2">
             <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider px-2 mb-2 flex items-center justify-between">
               <a href="/wiki/" onClick={onClose} className="hover:text-emerald-500 transition-colors">
                 极客百科与 FAQ 矩阵 (4 大类)
               </a>
-              <span className="font-mono text-[11px] text-emerald-500">50 篇深度</span>
+              <span className="font-mono text-[11px] text-emerald-500">53 篇深度</span>
             </div>
 
             <div className="space-y-2">

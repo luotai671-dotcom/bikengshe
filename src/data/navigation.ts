@@ -200,7 +200,8 @@ export const KNOWLEDGE_BASE_COLUMNS: MegaMenuColumn[] = [
       { title: '原生双 ISP 住宅宽带为什么是绝对刚需', href: '/wiki/routes/dual-isp-residential', badge: '防风控', description: '突破 MaxMind 与风控数据库，非广播纯净机房 IP' },
       { title: 'BGP 多线中转入口的作用与单线断网陷阱', href: '/wiki/routes/bgp-multi-cloud-entrance', description: '解决国内跨网结算瓶颈，多地 Anycast 自动故障容灾' },
       { title: 'ASN 广播与 IP 欺诈分揭秘 (识别垃圾机房 IP)', href: '/wiki/routes/asn-ip-fraud-score', description: '用 IPinfo 快速自测 Fraud Score，规避 Cloudflare 验证码' },
-      { title: '跨太平洋海缆 (TPE/NCP) 物理延迟极限推导', href: '/wiki/routes/submarine-cable-latency', description: '光纤折射率决定的理论下限，戳破 50ms 中美直连假延迟' }
+      { title: '跨太平洋海缆 (TPE/NCP) 物理延迟极限推导', href: '/wiki/routes/submarine-cable-latency', description: '光纤折射率决定的理论下限，戳破 50ms 中美直连假延迟' },
+      { title: 'Steam、PS5 与 Switch 联机游戏节点选型实测', href: '/wiki/routes/gaming-steam-ps5-switch-nat-nodes', badge: '主机联机', description: 'NAT 类型优化与 UDP 穿透，消除跨国丢包与组队断连' }
     ]
   },
   {
@@ -219,7 +220,8 @@ export const KNOWLEDGE_BASE_COLUMNS: MegaMenuColumn[] = [
       { title: 'Netflix 为什么只能看自制剧？非自制剧破解', href: '/wiki/unblocking/netflix-home-broadband', badge: '住宅解锁', description: '解锁非自制全球独家版权，家庭宽带 DNS 原生流媒体劫持' },
       { title: '大模型 SSE 流式输出频繁断流原因分析与 TCP 调优', href: '/wiki/unblocking/openai-sse-stream-timeout', description: '打字机生成一半卡死报错，Keep-Alive 与缓冲机制调优' },
       { title: 'WebRTC 真实公网 IP 泄漏攻防排查指南', href: '/wiki/unblocking/webrtc-ip-leakage-prevent', description: '防止浏览器 STUN 绕过系统代理泄露国内真实内网与公网 IP' },
-      { title: 'Disney+ 报错 Error 83 / 73 排查与版权锁定', href: '/wiki/unblocking/disney-error-83-fix', description: 'Widevine L1 DRM 数字版权认证与落地节点支持' }
+      { title: 'Disney+ 报错 Error 83 / 73 排查与版权锁定', href: '/wiki/unblocking/disney-error-83-fix', description: 'Widevine L1 DRM 数字版权认证与落地节点支持' },
+      { title: '跨境电商多店铺与社媒运营：独立静态出口拓扑', href: '/wiki/unblocking/cross-border-ecommerce-multi-account-ip-topology', badge: '电商防关联', description: '一店铺一指纹一静态住宅 IP，杜绝多账号连带风控封禁' }
     ]
   },
   {
@@ -233,6 +235,7 @@ export const KNOWLEDGE_BASE_COLUMNS: MegaMenuColumn[] = [
       href: '/wiki/'
     },
     items: [
+      { title: '软路由与旁路由全屋加速配置：OpenWrt 分流避坑', href: '/wiki/clients/openwrt-istoreos-router-gateway-proxy', badge: '全屋透明', description: '主路由与旁路网关架构对比，规避 DNS 环路与双向 NAT 损耗' },
       { title: 'TUN 虚拟网卡与系统代理本质区别 (L3接管)', href: '/wiki/clients/tun-mode-vs-system-proxy', badge: '网卡接管', description: '接管命令行、Git、Steam 游戏与 Telegram 的底层内核科普' },
       { title: 'Fake-IP 模式 vs Redir-Host 模式原理对比', href: '/wiki/clients/fake-ip-vs-redir-host', badge: '防DNS污染', description: '首包零延迟发出，彻底免疫国内运营商 DNS 污染' },
       { title: '【FAQ】如何一眼识别机场跑路前兆？', href: '/wiki/faq/airport-runaway-signs', badge: '防跑路', description: '群禁言、超低价终身传家宝大促背后的资金链断裂规律' },

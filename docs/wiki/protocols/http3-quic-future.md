@@ -12,7 +12,7 @@ tags: ["HTTP3","QUIC","未来趋势","网络生态","协议演进"]
 
 > [!IMPORTANT]
 > **【核心结论 / Direct Answer】**
-> 随着 Google、Meta、Cloudflare 等巨头全面普及 HTTP/3，基于 UDP 的 QUIC 流量已经占据全球公网流量的 30% 以上；这从根本上终结了“境外大流量 UDP 等于非正常行为”的历史假设，为基于 QUIC 的新一代跨境传输协议（如 Hysteria2、TUIC、MASQUE）提供了广阔的正常背景噪音掩护，科学上网生态正在从“绞尽脑汁伪装 TCP HTTPS”全面迈向“原生依托 HTTP/3 标准基础设施”的新纪元。
+> 随着 Google、Meta、Cloudflare 等巨头全面普及 HTTP/3，基于 UDP 的 QUIC 流量已经占据全球公网流量的 30% 以上；这从根本上终结了“境外大流量 UDP 等于非正常行为”的历史假设，为基于 QUIC 的新一代翻墙协议（如 Hysteria2、TUIC、MASQUE）提供了广阔的正常背景噪音掩护，科学上网生态正在从“绞尽脑汁伪装 TCP HTTPS”全面迈向“原生依托 HTTP/3 标准基础设施”的新纪元。
 
 ---
 

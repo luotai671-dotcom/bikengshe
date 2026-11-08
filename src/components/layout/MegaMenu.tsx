@@ -47,7 +47,7 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({
               极客百科与常见高频 FAQ 矩阵
             </span>
             <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
-              · 5 大垂直类目 / 50 篇硬核原理解析
+              · 5 大垂直类目 / 53 篇硬核原理解析
             </span>
           </div>
           <a
