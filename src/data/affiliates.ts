@@ -45,7 +45,7 @@ export const AFFILIATES: AffiliateConfig[] = [
   {
     id: 'yjx',
     name: '云界线',
-    targetUrl: 'https://chenpingan.yunjiexianaff.com/#/?code=xLJGaIHM',
+    targetUrl: 'https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT',
     goPath: '/go/yjx',
     aliases: ['yunjiexian']
   },
