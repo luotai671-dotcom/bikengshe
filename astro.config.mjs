@@ -6,6 +6,10 @@ import sitemap from '@astrojs/sitemap'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://tizibks.com',
+  server: {
+    host: true,
+    port: 4321,
+  },
   devToolbar: {
     enabled: false,
   },

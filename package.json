@@ -3,11 +3,11 @@
   "type": "module",
   "version": "2.0.0",
   "scripts": {
-    "dev": "astro dev --host 0.0.0.0 --port 5173",
-    "start": "astro dev --host 0.0.0.0 --port 5173",
+    "dev": "astro dev --host 0.0.0.0 --port 4321",
+    "start": "astro dev --host 0.0.0.0 --port 4321",
     "build": "astro build",
     "indexnow": "node scripts/indexnow.mjs",
-    "preview": "astro preview --host 0.0.0.0 --port 5173"
+    "preview": "astro preview --host 0.0.0.0 --port 4321"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",
