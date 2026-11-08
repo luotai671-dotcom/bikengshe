@@ -46,7 +46,7 @@ tags:
 | 🥉 **No.3** | **神行加速**<br>*(150GB 充沛容量 · 生产力首选)* | **IEPL 专线**<br>*(多节点分布式集群)* | **VLESS** | 2023 | **16 元/月** | 16元/月 150GB<br>(单月付大容量) | <kbd>sx0077</kbd><br>*(结账输入立减)* | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 神行加速 官网直达</a><br>★★★★★ (9.5) |
 | 4️⃣ **No.4** | **榴莲云**<br>*(亲民月付 · 学生科研优选)* | **IEPL 专线**<br>*(轻量低延迟转发)* | **VLESS** | 2023 | **8 元/月** | 年付约 8元/月 60GB | <kbd>ll88</kbd><br>*(结账输入立减)* | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 榴莲云 官网直达</a><br>★★★★☆ (9.3) |
 | 5️⃣ **No.5** | **环球梯**<br>*(6年老牌 · 企业级双冗余)* | **企业级内网专线 + IEPL**<br>*(多出口容灾热备)* | **VLESS** | 2020<br>*(6年老牌)* | **8 元/月** | 年付约 8元/月 60GB | <kbd>hq66</kbd><br>*(结账输入立减)* | <a href="/go/hqt" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 环球梯 官网直达</a><br>★★★★☆ (9.2) |
-| 6️⃣ **No.6** | **云界线**<br>*(150GB 大容量 · 现代集群)* | **IEPL 专线**<br>*(新架构高可用集群)* | **VLESS** | 2024 | **15 元/月** | 年付约 8元/月 150GB | <kbd>yjx888</kbd><br>*(结账输入立减)* | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 云界线 官网直达</a><br>★★★★☆ (9.1) |
+| 6️⃣ **No.6** | **云界线**<br>*(150GB 大容量 · 现代集群)* | **IEPL 专线**<br>*(新架构高可用集群)* | **VLESS** | 2024 | **15 元/月** | 年付约 8元/月 150GB | <kbd>yjx888</kbd><br>*(结账输入立减)* | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 云界线 官网直达</a><br>★★★★☆ (9.1) |
 | 7️⃣ **No.7** | **极连云**<br>*(100GB 均衡专线 · 稳定月付)* | **IEPL 专线**<br>*(稳定物理隧道传输)* | **VLESS** | 2023 | **18 元/月** | 18元/月 100GB<br>(均衡月付首选) | <kbd>jly888</kbd><br>*(结账输入立减)* | <a href="/go/jly" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 极连云 官网直达</a><br>★★★★☆ (9.0) |
 | 8️⃣ **No.8** | **光年梯**<br>*(全网极低门槛 · 备用防断利器)* | **IEPL 专线**<br>*(轻量低延迟集群)* | **VLESS** | 2025 | **7 元/月**<br>*(最低门槛)* | 7元/月 试水<br>18元/月 轻量 | 无 (立享全网底价)<br>*(直接享受底价)* | <a href="/go/gnt" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 光年梯 官网直达</a><br>★★★★☆ (8.9) |
 | 9️⃣ **No.9** | **边缘节点**<br>*(高端专线优化 · 智能调度)* | **高端专线优化中转**<br>*(分布式边缘接入)* | **VLESS** | 2023 | **22 元/月** | 22元/月 120GB<br>(多落地支持) | <kbd>xk808</kbd><br>*(结账输入立减)* | <a href="/go/byjd" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 边缘节点 官网直达</a><br>★★★★☆ (8.8) |
@@ -207,7 +207,7 @@ tags:
 #### 【资费套餐与直达购买引导】
 - **主打配置**：15 元/月（年付折合约 8元/月 150GB）；
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）；
-- **购买通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 点击直达云界线官网注册开通</a>
+- **购买通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 点击直达云界线官网注册开通</a>
 
 ---
 

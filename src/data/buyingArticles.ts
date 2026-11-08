@@ -55,7 +55,7 @@ export const BUYING_AND_RANKINGS_ARTICLES: Record<string, ArticleData> = {
 | 排名 | 品牌名称 | 专线架构与类型 | ChatGPT/Claude 解锁等级 | IP 纯净度评级 (Fraud Score) | SSE 流式长连接丢包率 | 起步资费门槛 | 专属优惠码 | 官网直达通道 |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | 🥇 **TOP 1** | **闪电鼠** *(AI首推)* | IEPL + 企业内网双专线 | **S 级** (免验直通/防封号) | **极纯净** (< 5分) | **< 0.1%** (长代码零中断) | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| 🥈 **TOP 2** | **云界线** *(大流量)* | IEPL 高性价比专线集群 | **A+ 级** (秒开极速放行) | **纯净** (< 12分) | **< 0.3%** (流式极平稳) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| 🥈 **TOP 2** | **云界线** *(大流量)* | IEPL 高性价比专线集群 | **A+ 级** (秒开极速放行) | **纯净** (< 12分) | **< 0.3%** (流式极平稳) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | 🥉 **TOP 3** | **大佬云** *(低抖动)* | 纯血 IEPL 跨国内网专线 | **A+ 级** (全天候稳定可用) | **纯净** (< 10分) | **< 0.2%** (Jitter < 1.1ms) | 年付约 8元/月 (60GB) | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **神行加速** | 大带宽 IEPL 骨干专线 | **A 级** (多开并发友好) | **良好** (< 15分) | **< 0.4%** | 16元/月 (150GB大容量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 专线 | **A 级** (大文本快速吐字) | **良好** (< 18分) | **< 0.4%** | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -221,7 +221,7 @@ rules:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（150GB/月 大容量专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 
@@ -1772,7 +1772,7 @@ curl -s https://ipinfo.io/json
 | 🥉 **No.3** | **神行加速**<br>*(150GB 充沛容量 · 生产力首选)* | **IEPL 专线**<br>*(多节点分布式集群)* | **VLESS** | 2023 | **16 元/月** | 16元/月 150GB<br>(单月付大容量) | <kbd>sx0077</kbd><br>*(结账输入立减)* | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 神行加速 官网直达</a><br>★★★★★ (9.5) |
 | 4️⃣ **No.4** | **榴莲云**<br>*(亲民月付 · 学生科研优选)* | **IEPL 专线**<br>*(轻量低延迟转发)* | **VLESS** | 2023 | **8 元/月** | 年付约 8元/月 60GB | <kbd>ll88</kbd><br>*(结账输入立减)* | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 榴莲云 官网直达</a><br>★★★★☆ (9.3) |
 | 5️⃣ **No.5** | **环球梯**<br>*(6年老牌 · 企业级双冗余)* | **企业级内网专线 + IEPL**<br>*(多出口容灾热备)* | **VLESS** | 2020<br>*(6年老牌)* | **8 元/月** | 年付约 8元/月 60GB | <kbd>hq66</kbd><br>*(结账输入立减)* | <a href="/go/hqt" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 环球梯 官网直达</a><br>★★★★☆ (9.2) |
-| 6️⃣ **No.6** | **云界线**<br>*(150GB 大容量 · 现代集群)* | **IEPL 专线**<br>*(新架构高可用集群)* | **VLESS** | 2024 | **15 元/月** | 年付约 8元/月 150GB | <kbd>yjx888</kbd><br>*(结账输入立减)* | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 云界线 官网直达</a><br>★★★★☆ (9.1) |
+| 6️⃣ **No.6** | **云界线**<br>*(150GB 大容量 · 现代集群)* | **IEPL 专线**<br>*(新架构高可用集群)* | **VLESS** | 2024 | **15 元/月** | 年付约 8元/月 150GB | <kbd>yjx888</kbd><br>*(结账输入立减)* | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 云界线 官网直达</a><br>★★★★☆ (9.1) |
 | 7️⃣ **No.7** | **极连云**<br>*(100GB 均衡专线 · 稳定月付)* | **IEPL 专线**<br>*(稳定物理隧道传输)* | **VLESS** | 2023 | **18 元/月** | 18元/月 100GB<br>(均衡月付首选) | <kbd>jly888</kbd><br>*(结账输入立减)* | <a href="/go/jly" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 极连云 官网直达</a><br>★★★★☆ (9.0) |
 | 8️⃣ **No.8** | **光年梯**<br>*(全网极低门槛 · 备用防断利器)* | **IEPL 专线**<br>*(轻量低延迟集群)* | **VLESS** | 2025 | **7 元/月**<br>*(最低门槛)* | 7元/月 试水<br>18元/月 轻量 | 无 (立享全网底价)<br>*(直接享受底价)* | <a href="/go/gnt" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 光年梯 官网直达</a><br>★★★★☆ (8.9) |
 | 9️⃣ **No.9** | **边缘节点**<br>*(高端专线优化 · 智能调度)* | **高端专线优化中转**<br>*(分布式边缘接入)* | **VLESS** | 2023 | **22 元/月** | 22元/月 120GB<br>(多落地支持) | <kbd>xk808</kbd><br>*(结账输入立减)* | <a href="/go/byjd" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 边缘节点 官网直达</a><br>★★★★☆ (8.8) |
@@ -1933,7 +1933,7 @@ curl -s https://ipinfo.io/json
 #### 【资费套餐与直达购买引导】
 - **主打配置**：15 元/月（年付折合约 8元/月 150GB）；
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）；
-- **购买通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 点击直达云界线官网注册开通</a>
+- **购买通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">👉 点击直达云界线官网注册开通</a>
 
 ---
 
@@ -2177,7 +2177,7 @@ curl -s https://ipinfo.io/json
 | 🥉 **TOP 3** | **榴莲云** | 高速 IEPL 优质专线 | **< 1.5ms** | **< 0.4%** | VLESS | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **闪电鼠** *(6年老牌)* | IEPL + 企业内网双专线 | **< 1.0ms** | **< 0.2%** | VLESS | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **神行加速** | 大带宽 IEPL 骨干专线 | **< 1.6ms** | **< 0.5%** | VLESS | 16元/月 (150GB大流量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| **TOP 6** | **云界线** | 高性价比 IEPL 专线集群 | **< 1.8ms** | **< 0.6%** | VLESS | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| **TOP 6** | **云界线** | 高性价比 IEPL 专线集群 | **< 1.8ms** | **< 0.6%** | VLESS | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 7** | **极连云** | IEPL 专线多入口调度 | **< 2.0ms** | **< 0.5%** | VLESS | 18元/月 (100GB) | <kbd>jly888</kbd> | <a href="/go/jly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 8** | **光年梯** *(2025新锐)* | IEPL 灵活轻量专线 | **< 2.2ms** | **< 0.8%** | VLESS | 7元/月试水，18元轻量 | 动态直降 | <a href="/go/gnt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 9** | **边缘节点** | 高端定制专线与住宅流媒体 | **< 1.2ms** | **< 0.3%** | VLESS | 22元/月 (120GB) | <kbd>xk808</kbd> | <a href="/go/byjd" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -2387,7 +2387,7 @@ curl -s https://ipinfo.io/json
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（每月享有 150GB 专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 
@@ -2565,7 +2565,7 @@ curl -s https://ipinfo.io/json
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | 🥇 **TOP 1** | **神行加速** *(观影首推)* | 大带宽 IEPL 骨干专线 | **全区完整解锁** (美/日/港/新/台) | **秒级直通** (无报错) | **< 0.4 秒** (进度条随便拖) | 16元/月 (150GB大流量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | 🥈 **TOP 2** | **闪电鼠** *(6年老牌)* | IEPL + 企业内网双专线 | **全区完整解锁** (原生双ISP) | **免检秒开** (支持IMAX) | **< 0.5 秒** (连接极稳定) | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| 🥉 **TOP 3** | **云界线** *(大容量)* | IEPL 专线高带宽集群 | **全区解锁** (支持绝大多数) | **全支持** (稳定不跳区) | **< 0.6 秒** (10万码率稳定) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| 🥉 **TOP 3** | **云界线** *(大容量)* | IEPL 专线高带宽集群 | **全区解锁** (支持绝大多数) | **全支持** (稳定不跳区) | **< 0.6 秒** (10万码率稳定) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **大佬云** *(低抖动)* | 纯血 IEPL 跨国内网专线 | **全区解锁** (住宅DNS分流) | **秒级开通** (4K HDR流畅) | **< 0.5 秒** (Jitter < 1.1ms) | 年付约 8元/月 (60GB) | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 专线 | **完整解锁** (美日港台) | **全支持** (动画疯秒开) | **< 0.5 秒** (大吞吐缓冲快) | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 6** | **环球梯** *(6年老牌)* | 企业级内网专线 + IEPL | **完整解锁** (多机房容灾) | **免检直通** (支持BBC) | **< 0.6 秒** (老牌资源稳定) | 年付约 8元/月 (60GB) | <kbd>hq66</kbd> | <a href="/go/hqt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -2733,7 +2733,7 @@ rules:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（每月享有 150GB 专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 
@@ -2929,7 +2929,7 @@ rules:
 | 🥉 **TOP 3** | **大佬云** *(低抖动)* | 纯血 IEPL 跨国内网专线 | VLESS | **8 元/月** | 年付约 8元/月 60GB | 约 0.13 元/GB | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **神行加速** *(大流量优选)* | 大带宽 IEPL 骨干专线 | VLESS | **16 元/月** | 16元/月 150GB (纯月付) | **约 0.10 元/GB** | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 优质专线 | VLESS | **8 元/月** | 年付约 8元/月 60GB | 约 0.13 元/GB | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| **TOP 6** | **云界线** | IEPL 专线大容量集群 | VLESS | **15 元/月** | 年付约 8元/月 150GB | 约 0.05 元/GB (年折) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| **TOP 6** | **云界线** | IEPL 专线大容量集群 | VLESS | **15 元/月** | 年付约 8元/月 150GB | 约 0.05 元/GB (年折) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 7** | **速界** *(2026新秀)* | IPLC 纯内网二层通信 | VLESS | **15 元/月** | 15元/月 50GB 起步 | 约 0.30 元/GB | <kbd>sujie80</kbd> | <a href="/go/sj" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 8** | **边缘节点** | 高端定制纯血住宅专线 | VLESS | **22 元/月** | 22元/月 120GB 商务版 | 约 0.18 元/GB | <kbd>xk808</kbd> | <a href="/go/byjd" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 9** | **光年梯** *(2025新锐)* | 灵活轻量 IEPL 专线 | VLESS | **7 元/月** | 7元试水版 / 18元轻量版 | 约 0.20 元/GB | 动态直降 | <a href="/go/gnt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -3112,7 +3112,7 @@ rules:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（150GB/月 大容量专线）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 
@@ -3276,7 +3276,7 @@ rules:
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 🥇 **TOP 1** | **大佬云** *(实测首推)* | 纯血 IEPL 跨国内网专线 | **185M / 580M** | **190M / 620M** | **175M / 540M** | **< 0.2%** | 4跳 (纯内网穿透) | 年付约 8元/月 (60GB) | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | 🥈 **TOP 2** | **闪电鼠** *(6年老牌)* | IEPL + 企业内网专线 | **180M / 560M** | **185M / 590M** | **170M / 530M** | **< 0.1%** | 4跳 (双物理内网) | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| 🥉 **TOP 3** | **云界线** *(大吞吐)* | IEPL 专线大容量集群 | **150M / 510M** | **160M / 530M** | **145M / 480M** | **< 0.4%** | 5跳 (BGP多线入站) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| 🥉 **TOP 3** | **云界线** *(大吞吐)* | IEPL 专线大容量集群 | **150M / 510M** | **160M / 530M** | **145M / 480M** | **< 0.4%** | 5跳 (BGP多线入站) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **神行加速** *(大流量)* | 大带宽 IEPL 骨干专线 | **240M / 650M** | **230M / 630M** | **220M / 600M** | **< 0.3%** | 4跳 (单线程极速) | 16元/月 (150GB大流量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 专线 | **160M / 520M** | **170M / 540M** | **150M / 490M** | **< 0.4%** | 5跳 (亚太低时延) | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 6** | **环球梯** *(6年老牌)* | 企业级内网专线 + IEPL | **175M / 550M** | **180M / 570M** | **165M / 520M** | **< 0.2%** | 4跳 (多入口热备) | 年付约 8元/月 (60GB) | <kbd>hq66</kbd> | <a href="/go/hqt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -3408,7 +3408,7 @@ Hop 5: 103.245.x.x (东京 IDC 落地机房)      RTT: 28.4ms | Loss: 0.1%
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（每月享有 150GB 专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 

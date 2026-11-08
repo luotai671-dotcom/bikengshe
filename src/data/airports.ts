@@ -185,7 +185,7 @@ export const AIRPORTS_LIST: AirportItem[] = [
     rank: 6,
     id: 'yjx',
     name: '云界线',
-    registerUrl: '/go/yjx',
+    registerUrl: 'https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT',
     promoCode: 'yjx888',
     since: 2024,
     minPayment: '15 元/月',

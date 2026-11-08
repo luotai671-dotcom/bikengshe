@@ -43,7 +43,7 @@ tags:
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | 🥇 **TOP 1** | **神行加速** *(观影首推)* | 大带宽 IEPL 骨干专线 | **全区完整解锁** (美/日/港/新/台) | **秒级直通** (无报错) | **< 0.4 秒** (进度条随便拖) | 16元/月 (150GB大流量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | 🥈 **TOP 2** | **闪电鼠** *(6年老牌)* | IEPL + 企业内网双专线 | **全区完整解锁** (原生双ISP) | **免检秒开** (支持IMAX) | **< 0.5 秒** (连接极稳定) | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| 🥉 **TOP 3** | **云界线** *(大容量)* | IEPL 专线高带宽集群 | **全区解锁** (支持绝大多数) | **全支持** (稳定不跳区) | **< 0.6 秒** (10万码率稳定) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| 🥉 **TOP 3** | **云界线** *(大容量)* | IEPL 专线高带宽集群 | **全区解锁** (支持绝大多数) | **全支持** (稳定不跳区) | **< 0.6 秒** (10万码率稳定) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **大佬云** *(低抖动)* | 纯血 IEPL 跨国内网专线 | **全区解锁** (住宅DNS分流) | **秒级开通** (4K HDR流畅) | **< 0.5 秒** (Jitter < 1.1ms) | 年付约 8元/月 (60GB) | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 专线 | **完整解锁** (美日港台) | **全支持** (动画疯秒开) | **< 0.5 秒** (大吞吐缓冲快) | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 6** | **环球梯** *(6年老牌)* | 企业级内网专线 + IEPL | **完整解锁** (多机房容灾) | **免检直通** (支持BBC) | **< 0.6 秒** (老牌资源稳定) | 年付约 8元/月 (60GB) | <kbd>hq66</kbd> | <a href="/go/hqt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -211,7 +211,7 @@ rules:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（每月享有 150GB 专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 

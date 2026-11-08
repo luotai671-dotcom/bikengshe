@@ -46,7 +46,7 @@ tags:
 | 🥉 **TOP 3** | **榴莲云** | 高速 IEPL 优质专线 | **< 1.5ms** | **< 0.4%** | VLESS | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **闪电鼠** *(6年老牌)* | IEPL + 企业内网双专线 | **< 1.0ms** | **< 0.2%** | VLESS | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **神行加速** | 大带宽 IEPL 骨干专线 | **< 1.6ms** | **< 0.5%** | VLESS | 16元/月 (150GB大流量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| **TOP 6** | **云界线** | 高性价比 IEPL 专线集群 | **< 1.8ms** | **< 0.6%** | VLESS | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| **TOP 6** | **云界线** | 高性价比 IEPL 专线集群 | **< 1.8ms** | **< 0.6%** | VLESS | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 7** | **极连云** | IEPL 专线多入口调度 | **< 2.0ms** | **< 0.5%** | VLESS | 18元/月 (100GB) | <kbd>jly888</kbd> | <a href="/go/jly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 8** | **光年梯** *(2025新锐)* | IEPL 灵活轻量专线 | **< 2.2ms** | **< 0.8%** | VLESS | 7元/月试水，18元轻量 | 动态直降 | <a href="/go/gnt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 9** | **边缘节点** | 高端定制专线与住宅流媒体 | **< 1.2ms** | **< 0.3%** | VLESS | 22元/月 (120GB) | <kbd>xk808</kbd> | <a href="/go/byjd" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -256,7 +256,7 @@ tags:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（每月享有 150GB 专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 

@@ -47,7 +47,7 @@ tags:
 | 排名 | 品牌名称 | 专线架构与类型 | ChatGPT/Claude 解锁等级 | IP 纯净度评级 (Fraud Score) | SSE 流式长连接丢包率 | 起步资费门槛 | 专属优惠码 | 官网直达通道 |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | 🥇 **TOP 1** | **闪电鼠** *(AI首推)* | IEPL + 企业内网双专线 | **S 级** (免验直通/防封号) | **极纯净** (< 5分) | **< 0.1%** (长代码零中断) | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| 🥈 **TOP 2** | **云界线** *(大流量)* | IEPL 高性价比专线集群 | **A+ 级** (秒开极速放行) | **纯净** (< 12分) | **< 0.3%** (流式极平稳) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| 🥈 **TOP 2** | **云界线** *(大流量)* | IEPL 高性价比专线集群 | **A+ 级** (秒开极速放行) | **纯净** (< 12分) | **< 0.3%** (流式极平稳) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | 🥉 **TOP 3** | **大佬云** *(低抖动)* | 纯血 IEPL 跨国内网专线 | **A+ 级** (全天候稳定可用) | **纯净** (< 10分) | **< 0.2%** (Jitter < 1.1ms) | 年付约 8元/月 (60GB) | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **神行加速** | 大带宽 IEPL 骨干专线 | **A 级** (多开并发友好) | **良好** (< 15分) | **< 0.4%** | 16元/月 (150GB大容量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 专线 | **A 级** (大文本快速吐字) | **良好** (< 18分) | **< 0.4%** | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -213,7 +213,7 @@ rules:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（150GB/月 大容量专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 

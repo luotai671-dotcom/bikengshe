@@ -47,7 +47,7 @@ tags:
 | 🥉 **TOP 3** | **大佬云** *(低抖动)* | 纯血 IEPL 跨国内网专线 | VLESS | **8 元/月** | 年付约 8元/月 60GB | 约 0.13 元/GB | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **神行加速** *(大流量优选)* | 大带宽 IEPL 骨干专线 | VLESS | **16 元/月** | 16元/月 150GB (纯月付) | **约 0.10 元/GB** | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 优质专线 | VLESS | **8 元/月** | 年付约 8元/月 60GB | 约 0.13 元/GB | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| **TOP 6** | **云界线** | IEPL 专线大容量集群 | VLESS | **15 元/月** | 年付约 8元/月 150GB | 约 0.05 元/GB (年折) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| **TOP 6** | **云界线** | IEPL 专线大容量集群 | VLESS | **15 元/月** | 年付约 8元/月 150GB | 约 0.05 元/GB (年折) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 7** | **速界** *(2026新秀)* | IPLC 纯内网二层通信 | VLESS | **15 元/月** | 15元/月 50GB 起步 | 约 0.30 元/GB | <kbd>sujie80</kbd> | <a href="/go/sj" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 8** | **边缘节点** | 高端定制纯血住宅专线 | VLESS | **22 元/月** | 22元/月 120GB 商务版 | 约 0.18 元/GB | <kbd>xk808</kbd> | <a href="/go/byjd" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 9** | **光年梯** *(2025新锐)* | 灵活轻量 IEPL 专线 | VLESS | **7 元/月** | 7元试水版 / 18元轻量版 | 约 0.20 元/GB | 动态直降 | <a href="/go/gnt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -230,7 +230,7 @@ tags:
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（150GB/月 大容量专线）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 

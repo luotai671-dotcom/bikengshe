@@ -47,7 +47,7 @@ tags:
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 🥇 **TOP 1** | **大佬云** *(实测首推)* | 纯血 IEPL 跨国内网专线 | **185M / 580M** | **190M / 620M** | **175M / 540M** | **< 0.2%** | 4跳 (纯内网穿透) | 年付约 8元/月 (60GB) | <kbd>dly88</kbd> | <a href="/go/dalaoyun" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | 🥈 **TOP 2** | **闪电鼠** *(6年老牌)* | IEPL + 企业内网专线 | **180M / 560M** | **185M / 590M** | **170M / 530M** | **< 0.1%** | 4跳 (双物理内网) | 96元/年 (约8元/月 60GB) | <kbd>sd88</kbd> | <a href="/go/sds" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
-| 🥉 **TOP 3** | **云界线** *(大吞吐)* | IEPL 专线大容量集群 | **150M / 510M** | **160M / 530M** | **145M / 480M** | **< 0.4%** | 5跳 (BGP多线入站) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
+| 🥉 **TOP 3** | **云界线** *(大吞吐)* | IEPL 专线大容量集群 | **150M / 510M** | **160M / 530M** | **145M / 480M** | **< 0.4%** | 5跳 (BGP多线入站) | 年付约 8元/月 (150GB) | <kbd>yjx888</kbd> | <a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 4** | **神行加速** *(大流量)* | 大带宽 IEPL 骨干专线 | **240M / 650M** | **230M / 630M** | **220M / 600M** | **< 0.3%** | 4跳 (单线程极速) | 16元/月 (150GB大流量) | <kbd>sx0077</kbd> | <a href="/go/sxjs" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 5** | **榴莲云** | 高吞吐 IEPL 专线 | **160M / 520M** | **170M / 540M** | **150M / 490M** | **< 0.4%** | 5跳 (亚太低时延) | 年付约 8元/月 (60GB) | <kbd>ll88</kbd> | <a href="/go/lly" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
 | **TOP 6** | **环球梯** *(6年老牌)* | 企业级内网专线 + IEPL | **175M / 550M** | **180M / 570M** | **165M / 520M** | **< 0.2%** | 4跳 (多入口热备) | 年付约 8元/月 (60GB) | <kbd>hq66</kbd> | <a href="/go/hqt" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a> |
@@ -179,7 +179,7 @@ Hop 5: 103.245.x.x (东京 IDC 落地机房)      RTT: 28.4ms | Loss: 0.1%
 #### 【资费套餐与直达购买引导】
 - **推荐套餐**：年付折合约 **8 元/月**（每月享有 150GB 专线流量）。
 - **专属优惠码**：<kbd>yjx888</kbd>（结账输入享折上折）
-- **官网直达通道**：<a href="/go/yjx" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
+- **官网直达通道**：<a href="https://chenpinga.yunjiexianaff.com/#/?code=rTCMGvQT" target="_blank" rel="nofollow sponsored noopener noreferrer">立即直达官网开通</a>
 
 ---
 
