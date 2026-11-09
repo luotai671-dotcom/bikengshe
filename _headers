@@ -1,0 +1,24 @@
+# ========================================================
+# Cloudflare Pages 静态资源与爬虫响应头配置
+# ========================================================
+
+/*
+  X-Robots-Tag: all, index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+  Access-Control-Allow-Origin: *
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/sitemap-index.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/*.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600

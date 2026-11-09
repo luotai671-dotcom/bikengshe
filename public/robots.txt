@@ -1,8 +1,32 @@
+# ========================================================
+# 梯子避坑社 (tizibks.com) 官方爬虫协议与站点地图配置
+# ========================================================
+
+User-agent: Bingbot
+Allow: /
+Disallow: /go/
+Disallow: /api/
+
+User-agent: msnbot
+Allow: /
+Disallow: /go/
+Disallow: /api/
+
+User-agent: BingPreview
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Disallow: /go/
+Disallow: /api/
+
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /assets/
+Disallow: /go/
 
-# Sitemap
+# Sitemaps
 Sitemap: https://tizibks.com/sitemap.xml
+Sitemap: https://tizibks.com/sitemap-index.xml
