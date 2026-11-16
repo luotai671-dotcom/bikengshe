@@ -59,6 +59,26 @@ allArticles.push({
   directAnswer: '跨境平台与海外社媒的多账号关联风控基于“指纹环境沙箱”与“网络出口特征”的双重图数据库比对。动态共享节点因 IP 频繁漂移与严重超售具有极高的连带封店风险；企业级防关联必须采用独享静态双 ISP 原生住宅 IP（Fraud Score < 5），并结合网关层静态 DHCP 绑定与策略路由，实现“一店铺、一指纹、一静态出口”的绝对物理隔离。'
 });
 
+allArticles.push({
+  slug: 'pay-as-you-go-non-expiring-backup-nodes',
+  categorySlug: 'faq',
+  category: '高频疑难杂症与常见 FAQ',
+  title: '按量计费与不限时流量机场选型指南：轻度出海、差旅办公与备用防断节点避坑实测',
+  description: '深度评测按量付费与不限时永久流量机场节点选型。揭秘倍率刺客、QoS 降级与暗扣陷阱，提供差旅办公、主力专线故障转移（Fallback）容灾与低开销分流方案。',
+  tags: ['按量付费机场推荐', '不限时机场节点选型', '备用机场推荐', '永久流量机场避坑', '轻度翻墙按量计费'],
+  directAnswer: '按量计费（Pay-as-you-go）与不限时流量包是低频轻度用户与高可用容灾备用的高性价比之选。选型核心在于规避“倍率刺客”（警惕 3x-5x 隐性倍率）与晚高峰 QoS 队列挤压；作为备用节点时，须在客户端将健康检查设为 lazy 惰性检测并拉长探测周期至 300 秒以上，彻底杜绝后台心跳偷跑计费流量。'
+});
+
+allArticles.push({
+  slug: 'academic-research-github-scholar-nodes',
+  categorySlug: 'routes',
+  category: '线路拓扑与机房链路',
+  title: '学生与科研学术访问加速节点选型：Google Scholar、GitHub 与海外文献库高纯净度机场避坑指南',
+  description: '深度评测高校学生与科研人员网络加速节点选型。攻克 Google Scholar 频繁人机验证、GitHub Clone 握手超时、arXiv 与 IEEE 文献库阻断，详解 IP 纯净度、CERNET 校园网分流与终端代理实战方案。',
+  tags: ['学生科研机场推荐', '学术翻墙机场选型', 'Google Scholar加速节点', 'GitHub克隆加速节点', '科研文献访问避坑'],
+  directAnswer: '科研学术场景的核心瓶颈在于出口 IP 纯净度（Fraud Score < 15）与校园网 CERNET 兼容性，而非大带宽吞吐。机房广播灰名单 IP 会直接触发 Google Scholar 403 阻断与文献库 5 秒盾无限循环；优质方案需采用商用级原生出口专线，配合精细化规则分流保障知网与校内 WebVPN 免授权直连，并为终端配置专用 Socks5 代理突破 Git Clone 握手超时。'
+});
+
 
 const categoriesMeta = [
   {

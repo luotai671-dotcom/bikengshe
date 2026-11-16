@@ -201,7 +201,8 @@ export const KNOWLEDGE_BASE_COLUMNS: MegaMenuColumn[] = [
       { title: 'BGP 多线中转入口的作用与单线断网陷阱', href: '/wiki/routes/bgp-multi-cloud-entrance', description: '解决国内跨网结算瓶颈，多地 Anycast 自动故障容灾' },
       { title: 'ASN 广播与 IP 欺诈分揭秘 (识别垃圾机房 IP)', href: '/wiki/routes/asn-ip-fraud-score', description: '用 IPinfo 快速自测 Fraud Score，规避 Cloudflare 验证码' },
       { title: '跨太平洋海缆 (TPE/NCP) 物理延迟极限推导', href: '/wiki/routes/submarine-cable-latency', description: '光纤折射率决定的理论下限，戳破 50ms 中美直连假延迟' },
-      { title: 'Steam、PS5 与 Switch 联机游戏节点选型实测', href: '/wiki/routes/gaming-steam-ps5-switch-nat-nodes', badge: '主机联机', description: 'NAT 类型优化与 UDP 穿透，消除跨国丢包与组队断连' }
+      { title: 'Steam、PS5 与 Switch 联机游戏节点选型实测', href: '/wiki/routes/gaming-steam-ps5-switch-nat-nodes', badge: '主机联机', description: 'NAT 类型优化与 UDP 穿透，消除跨国丢包与组队断连' },
+      { title: '学生与科研学术访问加速节点选型实测', href: '/wiki/routes/academic-research-github-scholar-nodes', badge: '学术科研', description: 'Google Scholar 人机验证破除，GitHub Clone 与文献库专线加速' }
     ]
   },
   {
@@ -241,6 +242,7 @@ export const KNOWLEDGE_BASE_COLUMNS: MegaMenuColumn[] = [
       { title: '【FAQ】如何一眼识别机场跑路前兆？', href: '/wiki/faq/airport-runaway-signs', badge: '防跑路', description: '群禁言、超低价终身传家宝大促背后的资金链断裂规律' },
       { title: '【FAQ】节点全部显示红字 Timeout 排查自救', href: '/wiki/faq/node-all-timeout-reasons', badge: '全红急救', description: '系统时间偏差、安全软件误杀与订阅过期五步排除' },
       { title: '【FAQ】为什么避坑社反复强调新手坚持月付？', href: '/wiki/faq/why-choose-monthly-pay', badge: '月付铁律', description: '拒绝年付被割韭菜，把风险降至一杯奶茶钱' },
+      { title: '【FAQ】按量计费与不限时流量选型实测：备用防断避坑', href: '/wiki/faq/pay-as-you-go-non-expiring-backup-nodes', badge: '备用防断', description: '揭秘倍率刺客与 QoS 降级，差旅办公与 Fallback 容灾实战' },
       { title: '【FAQ】节点延迟 20ms 但打开网页极慢原因', href: '/wiki/faq/low-ping-slow-speed', description: 'ICMP 抢答假延迟、跨国海缆微丢包与单线程限速真相' }
     ]
   }
