@@ -58,7 +58,7 @@ export const WIKI_FAQ_CATEGORIES: WikiFaqCategory[] = [
     "name": "全平台客户端与系统底层避坑",
     "shortName": "客户端与系统底层",
     "iconName": "Cpu",
-    "badge": "11 题",
+    "badge": "12 题",
     "description": "彻底解决休眠断网、局域网共享失效、卸载代理断网、微信慢及手机端高耗电发热等底层痛点。",
     "internalLink": {
       "title": "客户端崩溃、TUN报错与断网秒级自救",
@@ -71,7 +71,7 @@ export const WIKI_FAQ_CATEGORIES: WikiFaqCategory[] = [
     "name": "网络线路、专线与运营商机制",
     "shortName": "专线与运营商机制",
     "iconName": "Network",
-    "badge": "11 题",
+    "badge": "12 题",
     "description": "揭秘长城宽带晚高峰卡顿、中转机宕机全红、IPLC 假专线陷阱及运营商 QoS 丢包底层机理。",
     "internalLink": {
       "title": "晚高峰合规跨国专线传输物理内网专线实测",
@@ -1083,6 +1083,44 @@ export const WIKI_FAQ_MATRIX: WikiFaqItem[] = [
       "title": "Netflix/Disney+ 4K原生家庭宽带解锁",
       "href": "/rankings/streaming/",
       "ctaText": "查看【4K/8K 流媒体解锁榜】→"
+    }
+  },
+  {
+    "id": "faq-56",
+    "category": "clients-system",
+    "categoryName": "全平台客户端与系统底层避坑",
+    "question": "轻度出海与差旅备用，按量计费与不限时流量机场怎么选？如何规避倍率刺客与心跳偷跑？",
+    "answer": "按量计费（Pay-as-you-go）不设自然月清零倒计时，是低频用户与高可用容灾的最佳方案。选型避坑：1. 严防“倍率刺客”，警惕标称便宜但常用专线暗中设定 3x~5x 动态扣费；2. 晚高峰警惕 QoS 队列降级导致尽力而为丢包；3. 作为 Fallback 容灾备用链路时，客户端必须将健康检测设为 lazy 惰性检查并将探测周期拉长至 300 秒以上，彻底杜绝后台高频心跳偷跑计费流量。",
+    "tags": [
+      "按量付费机场推荐",
+      "不限时流量机场",
+      "备用防断节点",
+      "倍率刺客避坑",
+      "容灾Fallback"
+    ],
+    "internalLink": {
+      "title": "按量计费与不限时流量机场选型指南：轻度出海与备用防断节点避坑实测",
+      "href": "/wiki/faq/pay-as-you-go-non-expiring-backup-nodes/",
+      "ctaText": "阅读【按量计费与备用防断实战长文】→"
+    }
+  },
+  {
+    "id": "faq-57",
+    "category": "routes-isp",
+    "categoryName": "专线拓扑与运营商骨干网机制",
+    "question": "高校科研与学术访问（Google Scholar / GitHub / 文献库）节点怎么选？为什么普通看视频节点频繁人机验证？",
+    "answer": "科研学术场景核心瓶颈在于出口 IP 纯净度（Fraud Score < 15）与 CERNET 校园网兼容性。廉价机房 IP 被数万爬虫滥用触发 Google 灰名单，直接导致 403 阻断与 5 秒盾死循环。解决方案：1. 选用商用级原生出口专线；2. 客户端切勿开启全局代理，配置精细分流确保知网与校内 WebVPN 直连免费下文献；3. 终端配置专属 Socks5 代理突破 Git Clone 握手超时。",
+    "tags": [
+      "学生科研机场推荐",
+      "学术翻墙节点选型",
+      "Google Scholar加速",
+      "GitHub克隆加速",
+      "科研文献访问避坑"
+    ],
+    "internalLink": {
+      "title": "学生与科研学术访问加速节点选型：Google Scholar、GitHub 与海外文献库避坑指南",
+      "href": "/wiki/routes/academic-research-github-scholar-nodes/",
+      "ctaText": "阅读【科研学术文献加速深度长文】→"
     }
   }
 ]

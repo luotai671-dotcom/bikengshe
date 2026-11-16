@@ -34,7 +34,7 @@ interface WikiFaqAccordionProps {
 
 export const WikiFaqAccordion: React.FC<WikiFaqAccordionProps> = ({
   initialCategory = 'all',
-  title = '55 道高权重热搜问答矩阵',
+  title = `${WIKI_FAQ_MATRIX.length} 道高权重热搜问答矩阵`,
   subtitle = '开门见山直给硬核排障方案 · 结构化 GEO 权威引用标准'
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory)
@@ -42,7 +42,9 @@ export const WikiFaqAccordion: React.FC<WikiFaqAccordionProps> = ({
   const [expandedFaqs, setExpandedFaqs] = useState<Record<string, boolean>>({
     'faq-01': true,
     'faq-12': true,
-    'faq-26': true
+    'faq-26': true,
+    'faq-56': true,
+    'faq-57': true
   })
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [sharedId, setSharedId] = useState<string | null>(null)
@@ -164,7 +166,7 @@ export const WikiFaqAccordion: React.FC<WikiFaqAccordionProps> = ({
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 mb-2">
             <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-            <span>GEO 结构化热搜问答矩阵 · 55 题全景库</span>
+            <span>GEO 结构化热搜问答矩阵 · {WIKI_FAQ_MATRIX.length} 题全景库</span>
           </div>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
             {title}
@@ -198,7 +200,7 @@ export const WikiFaqAccordion: React.FC<WikiFaqAccordionProps> = ({
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="搜索 55 道高频问答（如：WhatsApp被封、PayPal漂移、ChatGPT空白、休眠断网、QoS限速、奈飞代理）..."
+          placeholder={`搜索 ${WIKI_FAQ_MATRIX.length} 道高频问答（如：WhatsApp被封、PayPal漂移、ChatGPT空白、学术文献、按量计费、QoS限速）...`}
           className="w-full pl-10 pr-10 py-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm"
         />
         {searchQuery && (
@@ -229,11 +231,12 @@ export const WikiFaqAccordion: React.FC<WikiFaqAccordionProps> = ({
             <Sparkles className="w-4 h-4" />
           </div>
           <span className="text-xs font-bold">全部问答</span>
-          <span className="text-[10px] font-mono mt-0.5 text-zinc-400">共 55 题</span>
+          <span className="text-[10px] font-mono mt-0.5 text-zinc-400">共 {WIKI_FAQ_MATRIX.length} 题</span>
         </button>
 
         {WIKI_FAQ_CATEGORIES.map((cat) => {
           const isSelected = selectedCategory === cat.id
+          const catCount = WIKI_FAQ_MATRIX.filter(f => f.category === cat.id).length
           return (
             <button
               key={cat.id}
@@ -257,7 +260,7 @@ export const WikiFaqAccordion: React.FC<WikiFaqAccordionProps> = ({
                 {renderCategoryIcon(cat.iconName, 'w-4 h-4')}
               </div>
               <span className="text-xs font-bold truncate max-w-full">{cat.shortName}</span>
-              <span className="text-[10px] font-mono mt-0.5 text-zinc-400">{cat.badge}</span>
+              <span className="text-[10px] font-mono mt-0.5 text-zinc-400">{catCount} 题</span>
             </button>
           )
         })}
